@@ -1,0 +1,603 @@
+/* --- Обнуление базовых стилей --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', "Times New Roman", Times, Georgia, serif;
+    background-color: #ffffff;
+    color: #111111;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* --- Временный контейнер для контента сайта --- */
+main {
+    min-height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Cinzel', serif;
+    letter-spacing: 0.2em;
+    color: #bcbcbc;
+    text-transform: uppercase;
+}
+
+/* ==========================================
+           СТИЛИ ХЕДЕРА
+           ========================================== */
+
+.header {
+    width: 100%;
+    border-bottom: 1px solid #e5e5e5;
+    background-color: #ffffff;
+    position: relative;
+    z-index: 1000;
+}
+
+/* --- Главная панель (Main Header) --- */
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px 10px 40px;
+}
+
+.header-section {
+    flex: 1;
+    display: flex;
+    align-items: center;
+}
+
+/* Левая секция */
+.header-left {
+    justify-content: flex-start;
+    gap: 25px;
+}
+
+.desktop-info-links {
+    display: flex;
+    gap: 20px;
+}
+
+.desktop-info-links a {
+    text-decoration: none;
+    color: #111111;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-family: Arial, sans-serif;
+    transition: color 0.2s ease;
+}
+
+.desktop-info-links a:hover {
+    color: #40916C;
+}
+
+/* Кнопка Бургера */
+.burger-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    padding: 5px 0;
+    z-index: 1100;
+}
+
+.burger-btn span {
+    display: block;
+    width: 22px;
+    height: 1px;
+    background-color: #111111;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.burger-btn.active span:nth-child(1) {
+    transform: translateY(6px) rotate(45deg);
+}
+
+.burger-btn.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.burger-btn.active span:nth-child(3) {
+    transform: translateY(-6px) rotate(-45deg);
+}
+
+/* Кнопка Поиска */
+.search-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #111111;
+    font-weight: 400;
+    font-family: Arial, sans-serif;
+    transition: color 0.3s ease, font-weight 0.3s ease;
+}
+
+.search-btn:hover {
+    color: #888888;
+    font-weight: 700;
+}
+
+.search-btn:hover .icon {
+    stroke: #888888;
+    fill: #888888;
+}
+
+/* --- Центральная секция: Логотип --- */
+.header-center {
+    justify-content: center;
+}
+
+.logo {
+    font-size: 34px;
+    letter-spacing: 0.35em;
+    text-decoration: none;
+    color: #111111;
+    font-weight: 400;
+    font-family: "Times New Roman", Times, serif;
+    padding-left: 0.35em;
+    white-space: nowrap;
+}
+
+/* Правая секция: Иконки */
+.header-right {
+    justify-content: flex-end;
+    gap: 25px;
+}
+
+.header-icon-link {
+    color: #111111;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+/* --- Навигация по категориям (Десктоп) --- */
+.main-navigation {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 15px;
+}
+
+.nav-list {
+    display: flex;
+    list-style: none;
+    padding-top: 15px;
+}
+
+.nav-item {
+    text-decoration: none;
+    color: #111111;
+    font-size: 13px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-weight: 400;
+    padding: 5px 65px;
+    position: relative;
+    transition: color 0.3s ease;
+    border-left: 1px solid rgba(0, 0, 0, 0.363);
+}
+
+.nav-item:hover {
+    color: #40916C;
+}
+
+.nav-item::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: #40916C;
+    transition: width 0.3s ease;
+}
+
+.nav-item:hover::after {
+    width: 100%;
+}
+
+/* --- Мобильное меню (Drawer) --- */
+.mobile-menu-drawer {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 80%;
+    max-width: 320px;
+    height: 100vh;
+    background-color: #ffffff;
+    box-shadow: 5px 0 15px rgba(0, 0, 0, 0.05);
+    z-index: 1050;
+    transition: left 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    padding: 90px 0 40px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    overflow-y: auto;
+}
+
+.mobile-menu-drawer.open {
+    left: 0;
+}
+
+.mobile-menu-title {
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: #666666;
+    padding: 0 30px;
+    margin-bottom: 5px;
+}
+
+.mobile-nav-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+}
+
+.mobile-nav-list li {
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.mobile-nav-list li:last-child {
+    border-bottom: none;
+}
+
+.mobile-nav-item {
+    text-decoration: none;
+    color: #111111;
+    font-size: 15px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    display: block;
+    font-family: Arial, sans-serif;
+    transition: color 0.2s ease;
+    padding: 18px 30px;
+}
+
+.mobile-nav-item:hover {
+    color: #40916C;
+}
+
+.mobile-sub-links {
+    margin-top: auto;
+    padding: 20px 30px 0 30px;
+    border-top: 1px dashed #e5e5e5;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.mobile-sub-item {
+    text-decoration: none;
+    color: #666666;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-family: Arial, sans-serif;
+}
+
+/* Задний полупрозрачный фон для мобильного меню */
+.menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.2);
+    z-index: 1040;
+    display: none;
+}
+
+.menu-overlay.active {
+    display: block;
+}
+
+/* Базовые стили для SVG иконок хедера */
+.icon {
+    width: 20px;
+    height: 20px;
+    fill: #111111;
+    stroke: #111111;
+    stroke-width: 0.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: stroke 0.3s ease, fill 0.3s ease;
+}
+
+
+/* ==========================================
+           СТИЛИ ФУТЕРА (КОМПЬЮТЕРНАЯ ВЕРСИЯ С ДВУМЯ ЦВЕТКАМИ)
+           ========================================== */
+
+.bv-footer {
+    background-color: #CFE1B9;
+    color: #1c2e15;
+    padding: 60px 40px 30px 40px;
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+    letter-spacing: 0.1em;
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: 500;
+    position: relative;
+    overflow: hidden;
+    /* Обрезает вылезающие за край части цветков */
+}
+
+/* Использование множественных фонов на псевдоэлементе для левого и правого цветков */
+.bv-footer::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    /* Слои фонов: 1-й слой (lily.png слева сверху), 2-й слой (image_31941b.png справа по центру) */
+    background-image: url('lily.png'), url('image_31941b.png');
+    background-position: -120px -100px, calc(100% + 120px) center;
+    background-size: 420px auto, 480px auto;
+    background-repeat: no-repeat, no-repeat;
+
+    opacity: 0.85;
+    pointer-events: none;
+    /* Прокликивание сквозь цветки */
+    z-index: 1;
+}
+
+.bv-footer-container {
+    max-width: 1440px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+    /* Текст и ссылки гарантированно поверх изображений */
+}
+
+/* Верхняя панель футера */
+.bv-footer-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 40px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.bv-newsletter-btn,
+.bv-social-links a {
+    color: #1c2e15;
+    text-decoration: none;
+    font-weight: 600;
+    transition: opacity 0.3s ease;
+}
+
+.bv-newsletter-btn:hover,
+.bv-social-links a:hover {
+    opacity: 0.6;
+}
+
+.bv-social-links {
+    display: flex;
+    gap: 20px;
+}
+
+/* Сетка футера */
+.bv-footer-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+    padding: 50px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.bv-footer-col h3 {
+    font-family: 'Cinzel', serif;
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 25px;
+    letter-spacing: 0.15em;
+    color: #1c2e15;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.bv-footer-col h3 .acc-toggle {
+    display: none;
+    font-size: 16px;
+    font-weight: 400;
+    transition: transform 0.3s ease;
+}
+
+.bv-footer-col ul {
+    list-style: none;
+}
+
+.bv-footer-col ul li {
+    margin-bottom: 15px;
+}
+
+.bv-footer-col ul li a {
+    color: #2c4224;
+    text-decoration: none;
+    font-weight: 600;
+    text-shadow: 0.1px 0 #1c2e15;
+    transition: color 0.3s ease;
+    display: inline-block;
+}
+
+.bv-footer-col ul li a:hover {
+    color: #111111;
+}
+
+/* Нижняя секция футера */
+.bv-footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 30px;
+    font-size: 11px;
+    color: #405437;
+    font-weight: 600;
+}
+
+.bv-country-selector {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #1c2e15;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.bv-country-selector svg {
+    width: 14px;
+    height: 14px;
+    fill: currentColor;
+}
+
+
+/* ==========================================
+           АДАПТИВНОСТЬ И МОБИЛЬНЫЙ ФУТЕР
+           ========================================== */
+
+/* Планшетная версия */
+@media (max-width: 1200px) {
+
+    /* Оптимизируем масштаб и вылеты цветков на средних экранах */
+    .bv-footer::after {
+        background-position: -160px -120px, calc(100% + 140px) center;
+        background-size: 340px auto, 390px auto;
+        opacity: 0.65;
+    }
+}
+
+@media (max-width: 1024px) {
+
+    .top-bar,
+    .main-navigation,
+    .desktop-info-links {
+        display: none;
+    }
+
+    .burger-btn {
+        display: flex;
+    }
+
+    .main-header {
+        padding: 15px 20px;
+    }
+
+    .logo {
+        font-size: 17px;
+        white-space: normal;
+        text-align: center;
+        display: inline-block;
+        line-height: 1.4;
+    }
+
+    .search-text {
+        display: none;
+    }
+}
+
+@media (max-width: 992px) {
+    .bv-footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+    }
+}
+
+/* Настоящая мобильная адаптация (Смартфоны) */
+@media (max-width: 768px) {
+
+    /* Полностью отключаем фоновые рисунки на мобильных для идеальной читаемости списков */
+    .bv-footer::after {
+        display: none;
+    }
+
+    .bv-footer {
+        padding: 40px 20px 30px 20px;
+    }
+
+    .bv-footer-top {
+        flex-direction: column;
+        gap: 25px;
+        align-items: center;
+        text-align: center;
+        padding-bottom: 30px;
+    }
+
+    .bv-social-links {
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 15px 25px;
+    }
+
+    .bv-footer-grid {
+        grid-template-columns: 1fr;
+        gap: 0;
+        padding: 15px 0;
+    }
+
+    .bv-footer-col {
+        border-bottom: 1px solid rgba(28, 46, 21, 0.15);
+    }
+
+    .bv-footer-col h3 {
+        margin-bottom: 0;
+        padding: 20px 0;
+        cursor: pointer;
+        user-select: none;
+        font-size: 13px;
+    }
+
+    .bv-footer-col h3 .acc-toggle {
+        display: block;
+    }
+
+    .bv-footer-col ul {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1), padding 0.35s ease;
+        padding-left: 5px;
+    }
+
+    .bv-footer-col.active ul {
+        max-height: 300px;
+        padding-bottom: 20px;
+    }
+
+    .bv-footer-col.active h3 .acc-toggle {
+        transform: rotate(45deg);
+    }
+
+    .bv-footer-col ul li {
+        margin-bottom: 12px;
+    }
+
+    .bv-footer-col ul li a {
+        padding: 4px 0;
+        width: 100%;
+    }
+
+    .bv-footer-bottom {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        text-align: center;
+        padding-top: 30px;
+    }
+}

@@ -3,17 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fleur De Lune</title>
+    <title>Fleur De Lune — Bulgari Style</title>
     
-    <link rel="stylesheet" href="../assets/styles/style.css"
+    <link rel="stylesheet" href="assets/styles/style.css">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
-
 </head>
 <body>
 
     <header class="header">
+        <div class="top-bar">
+            <div class="top-right"></div>
+        </div>
 
         <div class="main-header">
             <div class="header-section header-left">
@@ -75,10 +78,10 @@
             <a href="#" class="mobile-sub-item">Contact Us</a>
         </div>
     </div>
+    
     <main>
         <h2>Content Area</h2>
     </main>
-
 
     <footer class="bv-footer">
         <div class="bv-footer-container">
@@ -152,6 +155,7 @@
 
         </div>
     </footer>
+
     <script>
         // Скрипт мобильного Хедера (Бургер)
         const burgerBtn = document.getElementById('burgerToggle');
@@ -166,7 +170,6 @@
 
         burgerBtn.addEventListener('click', toggleMenu);
         menuOverlay.addEventListener('click', toggleMenu);
-
 
         // Скрипт мобильного Футера (Аккордеоны)
         document.querySelectorAll('.bv-footer-col h3').forEach(header => {

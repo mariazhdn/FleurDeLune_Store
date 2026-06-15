@@ -3,13 +3,215 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fleur De Lune — Bulgari Style</title>
+    <title>Contact Us — Fleur De Lune</title>
     
     <link rel="stylesheet" href="assets/styles/style.css">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* Базовые сбросы против горизонтального скролла */
+        main {
+            display: block !important;
+            width: 100%;
+            overflow-x: hidden;
+        }
+
+        /* 1. HERO BANNER */
+        .about-hero {
+            min-height: 100vh;
+            background: linear-gradient(rgba(0,0,0,.4), rgba(0,0,0,.4)),
+                        url("assets/images/Contact.jpg") center center/cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 40px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .hero-content {
+            max-width: 850px;
+            color: white;
+        }
+
+        .hero-content .eyebrow {
+            text-transform: uppercase;
+            letter-spacing: .35em;
+            font-size: 12px;
+            margin-bottom: 20px;
+        }
+
+        .hero-content h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 56px;
+            font-weight: 400;
+            line-height: 1.15;
+            margin-bottom: 20px;
+        }
+
+        /* 2. ШАХМАТНАЯ СЕТКА (Защищенная структура) */
+        .about-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: stretch;
+            min-height: 700px;
+            width: 100%;
+            box-sizing: border-box;
+            background: #ffffff;
+        }
+
+        .about-content {
+            padding: 90px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .about-content span {
+            color: #40916C;
+            text-transform: uppercase;
+            letter-spacing: .25em;
+            font-size: 12px;
+        }
+
+        .about-content h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 38px;
+            font-weight: 400;
+            line-height: 1.3;
+            margin: 20px 0 30px;
+            color: #111111;
+        }
+
+        .about-content p {
+            color: #555555;
+            line-height: 2;
+            margin-bottom: 20px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 15px;
+        }
+
+        .about-image {
+            position: relative;
+            width: 100%;
+            min-height: 400px;
+        }
+
+        .about-image img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Порядок для реверса */
+        .reverse .about-image { order: 1; }
+        .reverse .about-content { order: 2; }
+
+        /* 3. КОНТАКТНАЯ ФОРМА И ЭЛЕМЕНТЫ ИНТЕРФЕЙСА */
+        .contact-form {
+            margin-top: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .form-group input, 
+        .form-group textarea {
+            width: 100%;
+            padding: 15px 0;
+            border: none;
+            border-bottom: 1px solid #ccc;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 14px;
+            background: transparent;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus, 
+        .form-group textarea:focus {
+            border-bottom: 1px solid #111;
+        }
+
+        .submit-btn {
+            align-self: flex-start;
+            padding: 16px 45px;
+            background: #111111;
+            color: #ffffff;
+            border: 1px solid #111111;
+            text-transform: uppercase;
+            letter-spacing: .15em;
+            font-size: 13px;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 15px;
+        }
+
+        .submit-btn:hover {
+            background: transparent;
+            color: #111111;
+        }
+
+        .contact-info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .info-item h4 {
+            font-family: 'Cinzel', serif;
+            font-size: 16px;
+            margin-bottom: 8px;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+        }
+
+        /* АДАПТИВНОСТЬ */
+        @media(max-width: 900px) {
+            .about-row {
+                grid-template-columns: 1fr;
+                min-height: auto;
+            }
+
+            .reverse .about-image,
+            .reverse .about-content {
+                order: initial;
+            }
+            
+            .about-image {
+                height: 400px;
+            }
+            
+            .about-image img {
+                position: static;
+            }
+
+            .hero-content h1 {
+                font-size: 38px;
+            }
+
+            .about-content {
+                padding: 50px 25px;
+            }
+
+            .about-content h2 {
+                font-size: 28px;
+            }
+
+            .contact-info-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
 
@@ -21,9 +223,8 @@
         <div class="main-header">
             <div class="header-section header-left">
                 <div class="desktop-info-links">
-                    <a href="/flora_jewerly_store_about_us.html">About Us</a>
-                    <a href="/flora_jewerly_store_our_story.html">Our Story</a>
-                    <a href="/flora_jewerly_store_contact_us.html">Contact Us</a>
+                    <a href="/flora_jewerly_store_about_us.html">About us</a>
+                    <a href="#">Contact Us</a>
                 </div>
 
                 <button class="burger-btn" id="burgerToggle" aria-label="Toggle Menu">
@@ -75,13 +276,59 @@
             <li><a href="#" class="mobile-nav-item">Necklaces</a></li>
         </ul>
         <div class="mobile-sub-links">
-            <a href="#" class="mobile-sub-item">About us</a>
+            <a href="/flora_jewerly_store_about_us.html" class="mobile-sub-item">About us</a>
             <a href="#" class="mobile-sub-item">Contact Us</a>
         </div>
     </div>
     
     <main>
-        <h2>Content Area</h2>
+        <!-- Вводный баннер страницы контактов -->
+        <section class="about-hero">
+            <div class="hero-content">
+                <p class="eyebrow">Client Concierge</p>
+                <h1>Contact the Maison</h1>
+            </div>
+        </section>
+
+        <!-- БЛОК 2: КОНТАКТЫ И ФОРМА (Фото слева | Форма обратной связи справа - REVERSE) -->
+        <section class="about-row reverse">
+            <div class="about-image">
+                <img src="assets/images/Contact1.jpg" alt="Maison Client Relations">
+            </div>
+            <div class="about-content">
+                <span>At Your Service</span>
+                <h2>How Can We Assist You?</h2>
+                <p>
+                    Whether you are seeking custom high-jewelry creation, private appointments, or size assistance, our global concierges are available to assist you.
+                </p>
+                
+                <!-- Премиальная минималистичная форма -->
+                <form class="contact-form" action="#" method="POST">
+                    <div class="form-group">
+                        <input type="text" placeholder="FULL NAME *" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="EMAIL ADDRESS *" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea placeholder="HOW CAN WE HELP YOU? *" rows="3" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+
+                <!-- Дополнительные каналы связи -->
+                <div class="contact-info-grid">
+                    <div class="info-item">
+                        <h4>By Phone</h4>
+                        <p>+33 (0) 1 42 68 53 00<br><small>Mon-Sat: 10:00 — 19:00 (CET)</small></p>
+                    </div>
+                    <div class="info-item">
+                        <h4>Main Atelier</h4>
+                        <p>Place Vendôme, 75001<br>Paris, France</p>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
     <footer class="bv-footer">
@@ -122,7 +369,7 @@
                 <div class="bv-footer-col">
                     <h3>The World of Fleur <span class="acc-toggle">+</span></h3>
                     <ul>
-                        <li><a href="#">Our Philosophy</a></li>
+                        <li><a href="/flora_jewerly_store_about_us.html">Our Philosophy</a></li>
                         <li><a href="#">Craftsmanship</a></li>
                         <li><a href="#">Sustainability</a></li>
                         <li><a href="#">Careers</a></li>

@@ -3,13 +3,151 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fleur De Lune — Bulgari Style</title>
+    <title>The Maison History — Fleur De Lune</title>
     
     <link rel="stylesheet" href="assets/styles/style.css">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* Базовые сбросы против горизонтального смещения (как на Снимок экрана — 2026-06-15 в 6.34.17 PM.jpg) */
+        main {
+            display: block !important;
+            width: 100%;
+            overflow-x: hidden;
+        }
+
+        /* HERO BANNER ИСТОРИИ */
+        .about-hero {
+            min-height: 100vh;
+            background: linear-gradient(rgba(0,0,0,.45), rgba(0,0,0,.45)),
+                        url("assets/images/Story.jpg") center center/cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 40px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .hero-content {
+            max-width: 850px;
+            color: white;
+        }
+
+        .hero-content .eyebrow {
+            text-transform: uppercase;
+            letter-spacing: .35em;
+            font-size: 12px;
+            margin-bottom: 20px;
+        }
+
+        .hero-content h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 56px;
+            font-weight: 400;
+            line-height: 1.15;
+            margin-bottom: 20px;
+        }
+
+        /* ШАХМАТНАЯ СЕТКА */
+        .about-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: stretch;
+            min-height: 700px;
+            width: 100%;
+            box-sizing: border-box;
+            background: #ffffff;
+        }
+
+        .about-content {
+            padding: 90px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .about-content span {
+            color: #40916C;
+            text-transform: uppercase;
+            letter-spacing: .25em;
+            font-size: 12px;
+        }
+
+        .about-content h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 38px;
+            font-weight: 400;
+            line-height: 1.3;
+            margin: 20px 0 30px;
+            color: #111111;
+        }
+
+        .about-content p {
+            color: #555555;
+            line-height: 2;
+            margin-bottom: 20px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 15px;
+        }
+
+        .about-image {
+            position: relative;
+            width: 100%;
+            min-height: 400px;
+        }
+
+        .about-image img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Порядок для реверса */
+        .reverse .about-image { order: 1; }
+        .reverse .about-content { order: 2; }
+
+        /* АДАПТИВНОСТЬ */
+        @media(max-width: 900px) {
+            .about-row {
+                grid-template-columns: 1fr;
+                min-height: auto;
+            }
+
+            .reverse .about-image,
+            .reverse .about-content {
+                order: initial;
+            }
+            
+            .about-image {
+                height: 400px;
+            }
+            
+            .about-image img {
+                position: static;
+            }
+
+            .hero-content h1 {
+                font-size: 38px;
+            }
+
+            .about-content {
+                padding: 50px 25px;
+            }
+
+            .about-content h2 {
+                font-size: 28px;
+            }
+        }
+    </style>
 </head>
 <body>
 
@@ -21,8 +159,7 @@
         <div class="main-header">
             <div class="header-section header-left">
                 <div class="desktop-info-links">
-                    <a href="/flora_jewerly_store_about_us.html">About Us</a>
-                    <a href="/flora_jewerly_store_our_story.html">Our Story</a>
+                    <a href="/flora_jewerly_store_about_us.html">About us</a>
                     <a href="/flora_jewerly_store_contact_us.html">Contact Us</a>
                 </div>
 
@@ -75,16 +212,56 @@
             <li><a href="#" class="mobile-nav-item">Necklaces</a></li>
         </ul>
         <div class="mobile-sub-links">
-            <a href="#" class="mobile-sub-item">About us</a>
+            <a href="/flora_jewerly_store_about_us.html" class="mobile-sub-item">About us</a>
             <a href="#" class="mobile-sub-item">Contact Us</a>
         </div>
     </div>
     
     <main>
-        <h2>Content Area</h2>
+        <!-- Категорийный баннер Истории -->
+        <section class="about-hero">
+            <div class="hero-content">
+                <p class="eyebrow">Since 1984</p>
+                <h1>The Story of Fleur De Lune</h1>
+            </div>
+        </section>
+
+        <!-- БЛОК 1: НАЧАЛО (Текст слева | Фото справа) -->
+        <section class="about-row">
+            <div class="about-content">
+                <span>The Origins</span>
+                <h2>Born From the Moon and Flowers</h2>
+                <p>
+                    The Fleur de Lune story began in the heart of Paris, where a young jeweler, inspired by the cool glow of the moon and the delicacy of night-time flowers, opened his first private atelier.
+                </p>
+                <p>
+                    The brand's core idea was to immortalize the fleeting beauty of nature in precious metals. The first collections gained recognition thanks to the complex technique of invisible stone setting and the use of the rarest emerald and lunar raw materials.
+                </p>
+            </div>
+            <div class="about-image">
+                <img src="assets/images/Story2.jpg" alt="Vintage Jewelry Sketching">
+            </div>
+        </section>
+
+        <!-- БЛОК 2: СОВРЕМЕННОСТЬ (Фото слева | Текст справа - REVERSE) -->
+        <section class="about-row reverse">
+            <div class="about-image">
+                <img src="assets/images/Story1.jpg" alt="Modern High Jewelry Atelier">
+            </div>
+            <div class="about-content">
+                <span>The Modern Era</span>
+                <h2>A New Paradigm of High Jewelry</h2>
+                <p>
+                    Today, the House of Fleur de Lune combines the centuries-old jewelry traditions of French masters with cutting-edge 21st-century design.
+                </p>
+                <p>
+                    Each new piece is a manifesto of absolute luxury, created for those who value individuality and impeccable artistic style. We remain true to our roots, carefully passing on the secrets of our craft from generation to generation.
+            </div>
+        </section>
     </main>
 
     <footer class="bv-footer">
+        <!-- Код футера оставлен без изменений, ссылки в нем обновлены -->
         <div class="bv-footer-container">
             
             <div class="bv-footer-top">
@@ -122,7 +299,7 @@
                 <div class="bv-footer-col">
                     <h3>The World of Fleur <span class="acc-toggle">+</span></h3>
                     <ul>
-                        <li><a href="#">Our Philosophy</a></li>
+                        <li><a href="/flora_jewerly_store_about_us.html">Our Philosophy</a></li>
                         <li><a href="#">Craftsmanship</a></li>
                         <li><a href="#">Sustainability</a></li>
                         <li><a href="#">Careers</a></li>
@@ -158,7 +335,6 @@
     </footer>
 
     <script>
-        // Скрипт мобильного Хедера (Бургер)
         const burgerBtn = document.getElementById('burgerToggle');
         const mobileDrawer = document.getElementById('mobileDrawer');
         const menuOverlay = document.getElementById('menuOverlay');
@@ -172,7 +348,6 @@
         burgerBtn.addEventListener('click', toggleMenu);
         menuOverlay.addEventListener('click', toggleMenu);
 
-        // Скрипт мобильного Футера (Аккордеоны)
         document.querySelectorAll('.bv-footer-col h3').forEach(header => {
             header.addEventListener('click', () => {
                 if (window.innerWidth <= 768) {

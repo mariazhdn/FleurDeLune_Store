@@ -10,6 +10,172 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+/* Базовые сбросы для безопасности контента */
+main {
+    display: block !important; /* Гарантирует, что секции будут падать строго друг под друга */
+    width: 100%;
+    overflow-x: hidden;
+}
+
+/* 1. Секция Hero */
+.about-hero {
+    min-height: 100vh;
+    background: linear-gradient(rgba(0,0,0,.35), rgba(0,0,0,.35)),
+                url("assets/images/GardenAbout.jpg") center center/cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 40px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.hero-content {
+    max-width: 850px;
+    color: white;
+}
+
+.hero-content .eyebrow {
+    text-transform: uppercase;
+    letter-spacing: .35em;
+    font-size: 12px;
+    margin-bottom: 20px;
+}
+
+.hero-content h1 {
+    font-family: 'Cinzel', serif;
+    font-size: 68px;
+    font-weight: 400;
+    line-height: 1.15;
+    margin-bottom: 30px;
+}
+
+.hero-text {
+    max-width: 650px;
+    margin: auto;
+    line-height: 1.9;
+    font-size: 16px;
+}
+
+.hero-btn {
+    display: inline-block;
+    margin-top: 35px;
+    padding: 16px 36px;
+    border: 1px solid #ffffff;
+    text-decoration: none;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: .15em;
+    transition: .3s;
+}
+
+.hero-btn:hover {
+    background: #ffffff;
+    color: #111111;
+}
+
+/* 2. Контейнеры-ряды (Сетка) */
+.about-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: stretch; /* Растягивает контент и картинку по максимальной высоте друг друга */
+    min-height: 650px;    /* Слегка уменьшили для лучшего восприятия на средних экранах */
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* 3. Блок с текстом внутри ряда */
+.about-content {
+    padding: 90px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Центрирует текст по вертикали внутри своей половины */
+}
+
+.about-content span {
+    color: #40916C;
+    text-transform: uppercase;
+    letter-spacing: .25em;
+    font-size: 12px;
+}
+
+.about-content h2 {
+    font-family: 'Cinzel', serif;
+    font-size: 42px;
+    font-weight: 400;
+    line-height: 1.3;
+    margin: 20px 0 30px;
+}
+
+.about-content p {
+    color: #555555;
+    line-height: 2;
+    margin-bottom: 20px;
+}
+
+/* 4. Блок с картинкой внутри ряда */
+.about-image {
+    position: relative;
+    width: 100%;
+    min-height: 400px; /* Защита от схлопывания картинки в ноль */
+}
+
+.about-image img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* 5. Реверс (Шахматный порядок) */
+.reverse .about-image {
+    order: 1;
+}
+
+.reverse .about-content {
+    order: 2;
+}
+
+/* 6. Адаптивность под мобильные устройства */
+@media(max-width: 900px) {
+    .about-row {
+        grid-template-columns: 1fr; /* Перестраиваем в одну колонку */
+        min-height: auto;
+    }
+
+    /* Сбрасываем ордера, чтобы на мобилках всегда шло: Картинка -> Текст (или наоборот) равномерно */
+    .reverse .about-image,
+    .reverse .about-content {
+        order: initial;
+    }
+    
+    .about-image {
+        height: 350px; /* Фиксированная высота для картинок на смартфонах */
+    }
+    
+    .about-image img {
+        position: static; /* Возвращаем в стандартный поток */
+    }
+
+    .hero-content h1 {
+        font-size: 42px;
+    }
+
+    .about-content {
+        padding: 50px 25px;
+    }
+
+    .about-content h2 {
+        font-size: 32px;
+    }
+}
+    </style>
 </head>
 <body>
 
@@ -21,8 +187,7 @@
         <div class="main-header">
             <div class="header-section header-left">
                 <div class="desktop-info-links">
-                    <a href="/flora_jewerly_store_about_us.html">About Us</a>
-                    <a href="/flora_jewerly_store_our_story.html">Our Story</a>
+                    <a href="/flora_jewerly_store_about_us.html">About us</a>
                     <a href="/flora_jewerly_store_contact_us.html">Contact Us</a>
                 </div>
 
@@ -43,7 +208,7 @@
             </div>
 
             <div class="header-section header-right">
-                <a href="#" class="header-icon-link" aria-label="Wishlist">
+                <a href="/flora_jewelry_store_wishlist.html" class="header-icon-link" aria-label="Wishlist">
                     <svg class="icon" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
                 </a>
                 <a href="#" class="header-icon-link" aria-label="Account">
@@ -81,7 +246,80 @@
     </div>
     
     <main>
-        <h2>Content Area</h2>
+        <section class="about-hero">
+            <div class="hero-content">
+                <p class="eyebrow">Maison Fleur de Lune</p>
+                <h1>
+                    Inspired by Nature <br>
+                    & Crafted by Hand
+                </h1>
+                <p class="hero-text">
+                    Fleur de Lune transforms the delicate beauty of flowers into timeless jewelry pieces designed to be cherished for generations. Every creation reflects our passion for craftsmanship, elegance and the enduring beauty of nature.
+                </p>
+                <a href="/flora_jewerly_store_our_story.html" class="hero-btn">
+                    Discover Our Story
+                </a>
+            </div>
+        </section>
+
+        <section class="about-row">
+            <div class="about-content">
+                <span>Our Values</span>
+                <h2>
+                    Beauty, Craftsmanship <br>
+                    and Timeless Elegance
+                </h2>
+                <p>
+                    At Fleur de Lune, every creation begins with respect for nature and a commitment to exceptional artistry.
+                </p>
+                <p>
+                    We carefully select precious materials and transform them into refined jewelry that celebrates individuality, emotion and timeless luxury.
+                </p>
+                <p>
+                    Each piece is designed to become a cherished heirloom and accompany life's most meaningful moments.
+                </p>
+            </div>
+            <div class="about-image">
+                <img src="assets/images/About1.jpg" alt="Our Values — Luxury Jewelry">
+            </div>
+        </section>
+
+        <section class="about-row reverse">
+            <div class="about-image">
+                <img src="assets/images/About2.jpg" alt="Jewelry Atelier">
+            </div>
+            <div class="about-content">
+                <span>Paris Atelier</span>
+                <h2>
+                    Where Every Piece Begins
+                </h2>
+                <p>
+                    In our atelier, skilled artisans transform ideas into extraordinary jewelry through traditional techniques and meticulous attention to detail.
+                </p>
+                <p>
+                    From the first sketch to the final polish, every stage reflects our dedication to excellence, precision and timeless beauty.
+                </p>
+            </div>
+        </section>
+
+        <section class="about-row">
+            <div class="about-content">
+                <span>Our Craftsmanship</span>
+                <h2>
+                    The Art of Master <br>
+                    Goldsmiths
+                </h2>
+                <p>
+                    Our master craftsmen blend ancestral expertise with contemporary vision to unleash the vibrant brilliance of every gemstone.
+                </p>
+                <p>
+                    Through patience, passion, and rigorous excellence, they sculpt gold and set diamonds to achieve a perfect harmony of form and light.
+                </p>
+            </div>
+            <div class="about-image">
+                <img src="assets/images/About3.jpg" alt="Our Craftsmanship">
+            </div>
+        </section>
     </main>
 
     <footer class="bv-footer">

@@ -300,7 +300,7 @@ main {
     background-color: #CFE1B9;
     color: #1c2e15;
     padding: 60px 40px 30px 40px;
-    border-top: 1px solid rgba(0, 0, 0, 0.08);
+    border-top: 1px solid rgba(0,0,0,0.08);
     letter-spacing: 0.1em;
     font-size: 12px;
     text-transform: uppercase;
@@ -308,8 +308,6 @@ main {
     position: relative;
     overflow: hidden;
 }
-
-/* FIX: Пути теперь правильно смотрят на папку картинок из папки стилей через ../images/ */
 
 .bv-footer::after {
     content: '';

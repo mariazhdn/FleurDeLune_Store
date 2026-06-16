@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Maison History — Fleur De Lune</title>
-    
+
     <link rel="stylesheet" href="assets/styles/style.css">
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
 
     <style>
         /* Базовые сбросы против горизонтального смещения (как на Снимок экрана — 2026-06-15 в 6.34.17 PM.jpg) */
@@ -22,8 +25,8 @@
         /* HERO BANNER ИСТОРИИ */
         .about-hero {
             min-height: 100vh;
-            background: linear-gradient(rgba(0,0,0,.45), rgba(0,0,0,.45)),
-                        url("assets/images/Story.jpg") center center/cover;
+            background: linear-gradient(rgba(0, 0, 0, .45), rgba(0, 0, 0, .45)),
+                url("assets/images/Story.jpg") center center/cover;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -112,8 +115,13 @@
         }
 
         /* Порядок для реверса */
-        .reverse .about-image { order: 1; }
-        .reverse .about-content { order: 2; }
+        .reverse .about-image {
+            order: 1;
+        }
+
+        .reverse .about-content {
+            order: 2;
+        }
 
         /* АДАПТИВНОСТЬ */
         @media(max-width: 900px) {
@@ -126,11 +134,11 @@
             .reverse .about-content {
                 order: initial;
             }
-            
+
             .about-image {
                 height: 400px;
             }
-            
+
             .about-image img {
                 position: static;
             }
@@ -149,6 +157,7 @@
         }
     </style>
 </head>
+
 <body>
 
     <header class="header">
@@ -161,11 +170,11 @@
                     <a href="/flora_jewerly_store_contact_us.html">Contact Us</a>
                 </div>
             </div>
-            
+
             <button class="burger-btn" id="burgerToggle" aria-label="Toggle Menu">
-                    <span></span>
-                    <span></span>
-                    <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
             </button>
 
             <div class="header-section header-center">
@@ -174,22 +183,31 @@
 
             <div class="header-section header-right">
                 <a href="/flora_jewelry_store_wishlist.html" class="header-icon-link" aria-label="Wishlist">
-                    <svg class="icon" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                    <svg class="icon" viewBox="0 0 24 24">
+                        <path
+                            d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                    </svg>
                 </a>
                 <a href="#" class="header-icon-link" aria-label="Account">
-                    <svg class="icon" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                    <svg class="icon" viewBox="0 0 24 24">
+                        <path
+                            d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+                    </svg>
                 </a>
                 <a href="#" class="header-icon-link" aria-label="Shopping Bag">
-                    <svg class="icon" viewBox="0 0 24 24"><path d="M19 6h-2c0-2.76-2.24-5-5-5S7 3.24 7 6H5c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-7-3c1.66 0 3 1.34 3 3H9c0-1.66 1.34-3 3-3zm7 17H5V8h2v2c0 .55.45 1 1 1s1-.45 1-1V8h6v2c0 .55.45 1 1 1s1-.45 1-1V8h2v12z"/></svg>
+                    <svg class="icon" viewBox="0 0 24 24">
+                        <path
+                            d="M19 6h-2c0-2.76-2.24-5-5-5S7 3.24 7 6H5c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-7-3c1.66 0 3 1.34 3 3H9c0-1.66 1.34-3 3-3zm7 17H5V8h2v2c0 .55.45 1 1 1s1-.45 1-1V8h6v2c0 .55.45 1 1 1s1-.45 1-1V8h2v12z" />
+                    </svg>
                 </a>
             </div>
         </div>
 
         <nav class="main-navigation">
             <ul class="nav-list">
-                <li><a href="/categories/rings/flora_jewerly_store_rings.html" class="nav-item">Rings</a></li>
+                <li><a href="flora_jewerly_store_rings.html" class="nav-item">Rings</a></li>
                 <li><a href="#" class="nav-item">Bracelets</a></li>
-                <li><a href="/categories/earings/flora_jewerly_store_earings.html" class="nav-item">Earrings</a></li>
+                <li><a href="flora_jewerly_store_earings.html" class="nav-item">Earrings</a></li>
                 <li><a href="#" class="nav-item" style="border-right: 1px solid rgba(0, 0, 0, 0.363)">Necklaces</a></li>
             </ul>
         </nav>
@@ -199,9 +217,9 @@
     <div class="mobile-menu-drawer" id="mobileDrawer">
         <h3 class="mobile-menu-title">Categories:</h3>
         <ul class="mobile-nav-list">
-            <li><a href="#" class="mobile-nav-item">Rings</a></li>
+            <li><a href="flora_jewerly_store_rings.html" class="mobile-nav-item">Rings</a></li>
             <li><a href="#" class="mobile-nav-item">Bracelets</a></li>
-            <li><a href="#" class="mobile-nav-item">Earrings</a></li>
+            <li><a href="flora_jewerly_store_earings.html" class="mobile-nav-item">Earrings</a></li>
             <li><a href="#" class="mobile-nav-item">Necklaces</a></li>
         </ul>
         <div class="mobile-sub-links">
@@ -209,7 +227,7 @@
             <a href="#" class="mobile-sub-item">Contact Us</a>
         </div>
     </div>
-    
+
     <main>
         <!-- Категорийный баннер Истории -->
         <section class="about-hero">
@@ -225,10 +243,13 @@
                 <span>The Origins</span>
                 <h2>Born From the Moon and Flowers</h2>
                 <p>
-                    The Fleur de Lune story began in the heart of Paris, where a young jeweler, inspired by the cool glow of the moon and the delicacy of night-time flowers, opened his first private atelier.
+                    The Fleur de Lune story began in the heart of Paris, where a young jeweler, inspired by the cool
+                    glow of the moon and the delicacy of night-time flowers, opened his first private atelier.
                 </p>
                 <p>
-                    The brand's core idea was to immortalize the fleeting beauty of nature in precious metals. The first collections gained recognition thanks to the complex technique of invisible stone setting and the use of the rarest emerald and lunar raw materials.
+                    The brand's core idea was to immortalize the fleeting beauty of nature in precious metals. The first
+                    collections gained recognition thanks to the complex technique of invisible stone setting and the
+                    use of the rarest emerald and lunar raw materials.
                 </p>
             </div>
             <div class="about-image">
@@ -245,10 +266,13 @@
                 <span>The Modern Era</span>
                 <h2>A New Paradigm of High Jewelry</h2>
                 <p>
-                    Today, the House of Fleur de Lune combines the centuries-old jewelry traditions of French masters with cutting-edge 21st-century design.
+                    Today, the House of Fleur de Lune combines the centuries-old jewelry traditions of French masters
+                    with cutting-edge 21st-century design.
                 </p>
                 <p>
-                    Each new piece is a manifesto of absolute luxury, created for those who value individuality and impeccable artistic style. We remain true to our roots, carefully passing on the secrets of our craft from generation to generation.
+                    Each new piece is a manifesto of absolute luxury, created for those who value individuality and
+                    impeccable artistic style. We remain true to our roots, carefully passing on the secrets of our
+                    craft from generation to generation.
             </div>
         </section>
     </main>
@@ -256,7 +280,7 @@
     <footer class="bv-footer">
         <!-- Код футера оставлен без изменений, ссылки в нем обновлены -->
         <div class="bv-footer-container">
-            
+
             <div class="bv-footer-top">
                 <a href="#" class="bv-newsletter-btn">Subscribe to our newsletters</a>
                 <div class="bv-social-links">
@@ -268,7 +292,7 @@
             </div>
 
             <div class="bv-footer-grid">
-                
+
                 <div class="bv-footer-col">
                     <h3>Maison Services <span class="acc-toggle">+</span></h3>
                     <ul>
@@ -315,7 +339,8 @@
             <div class="bv-footer-bottom">
                 <a href="#" class="bv-country-selector">
                     <svg viewBox="0 0 24 24">
-                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.53c-.26-.81-1-1.4-1.9-1.4h-1v-3c0-.55-.45-1-1-1h-6v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                        <path
+                            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.53c-.26-.81-1-1.4-1.9-1.4h-1v-3c0-.55-.45-1-1-1h-6v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z" />
                     </svg>
                     Country/Region: International English
                 </a>
@@ -352,4 +377,5 @@
     </script>
 
 </body>
+
 </html>

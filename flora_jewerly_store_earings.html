@@ -4,7 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fleur de Lune — Collection</title>
+    <title>Fleur de Lune — Earings</title>
+
+    <link rel="stylesheet" href="assets/styles/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -756,9 +758,13 @@
 
 <body>
 
-    <!-- ========== HEADER ========== -->
     <header class="header">
         <div class="main-header">
+            <button class="burger-btn" id="burgerToggle" aria-label="Toggle Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
             <div class="header-section header-left">
                 <div class="desktop-info-links">
                     <a href="/flora_jewerly_store_about_us.html">About Us</a>
@@ -766,6 +772,12 @@
                     <a href="/flora_jewerly_store_contact_us.html">Contact Us</a>
                 </div>
             </div>
+
+            <button class="burger-btn" id="burgerToggle" aria-label="Toggle Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
 
             <div class="header-section header-center">
                 <a href="/flora_jewelry_store.html" class="logo">FLEUR DE LUNE</a>
@@ -792,11 +804,11 @@
             </div>
         </div>
         <nav class="main-navigation">
-            <ul class="mobile-nav-list">
-                <li><a href="flora_jewerly_store_rings.html" class="mobile-nav-item">Rings</a></li>
-                <li><a href="#" class="mobile-nav-item">Bracelets</a></li>
-                <li><a href="flora_jewerly_store_earings.html" class="mobile-nav-item">Earrings</a></li>
-                <li><a href="#" class="mobile-nav-item">Necklaces</a></li>
+            <ul class="nav-list">
+                <li><a href="flora_jewerly_store_rings.html" class="nav-item">Rings</a></li>
+                <li><a href="#" class="nav-item">Bracelets</a></li>
+                <li><a href="flora_jewerly_store_earings.html" class="nav-item">Earrings</a></li>
+                <li><a href="#" class="nav-item" style="border-right: 1px solid rgba(0, 0, 0, 0.363)">Necklaces</a></li>
             </ul>
         </nav>
     </header>
@@ -805,9 +817,9 @@
     <div class="mobile-menu-drawer" id="mobileDrawer">
         <h3 class="mobile-menu-title">Categories:</h3>
         <ul class="mobile-nav-list">
-            <li><a href="#" class="mobile-nav-item">Rings</a></li>
+            <li><a href="flora_jewerly_store_rings.html" class="mobile-nav-item">Rings</a></li>
             <li><a href="#" class="mobile-nav-item">Bracelets</a></li>
-            <li><a href="#" class="mobile-nav-item">Earrings</a></li>
+            <li><a href="flora_jewerly_store_earings.html" class="mobile-nav-item">Earrings</a></li>
             <li><a href="#" class="mobile-nav-item">Necklaces</a></li>
         </ul>
         <div class="mobile-sub-links">
@@ -816,7 +828,6 @@
         </div>
     </div>
 
-    <!-- ========== CATALOGUE ========== -->
     <main>
         <section class="catalogue-section">
 
@@ -1139,7 +1150,6 @@
         </section>
     </main>
 
-    <!-- ========== FOOTER ========== -->
     <footer class="bv-footer">
         <div class="bv-footer-container">
             <div class="bv-footer-top">

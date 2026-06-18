@@ -100,6 +100,7 @@
                 align-items: start;
             }
 
+            /* Галерея */
             .product-gallery {
                 width: 100%;
             }
@@ -109,9 +110,6 @@
                 max-width: 700px;
                 height: 700px;
                 object-fit: cover;
-                display: block;
-                border-radius: 4px;
-                margin: 0 auto;
             }
 
             .gallery-thumbs {
@@ -200,8 +198,12 @@
                 color: #555;
             }
 
-            /* Адаптація */
+            /* Планшеты */
             @media (max-width: 768px) {
+
+                .product-gallery>img {
+                    height: 450px;
+                }
 
                 .product-page {
                     padding: 40px 5%;
@@ -220,12 +222,30 @@
                     font-size: 24px;
                 }
 
-                .product-gallery>img {
-                    height: 450px;
+                .gallery-thumbs {
+                    justify-content: center;
+                    flex-wrap: wrap;
+                }
+
+                .product-options select {
+                    width: 100%;
+                }
+
+                .add-to-cart {
+                    max-width: 100%;
+                }
+
+                .product-details {
+                    margin-top: 35px;
                 }
             }
 
+            /* Телефоны */
             @media (max-width: 480px) {
+
+                .product-gallery>img {
+                    height: 320px;
+                }
 
                 .product-page {
                     padding: 25px 4%;
@@ -236,12 +256,27 @@
                     line-height: 1.1;
                 }
 
+                .product-category {
+                    font-size: 11px;
+                    letter-spacing: 2px;
+                }
+
                 .product-price {
                     font-size: 20px;
                 }
 
-                .product-gallery>img {
-                    height: 320px;
+                .product-description {
+                    font-size: 14px;
+                    line-height: 1.7;
+                }
+
+                .add-to-cart {
+                    padding: 15px;
+                    font-size: 13px;
+                }
+
+                .product-details h3 {
+                    font-size: 22px;
                 }
             }
         </style>
@@ -249,12 +284,12 @@
         <section class="product-container">
 
             <div class="product-gallery">
-                <img src="../images/necklace12.jpg" alt="Pétales de Nuit">
+                <img src="../images/earrings3.jpg" alt="Larmes de Lune">
 
                 <div class="gallery-thumbs">
-                    <img src="../images/necklace12.jpg" alt="">
-                    <img src="../images/necklace12.jpg" alt="">
-                    <img src="../images/necklace12.jpg" alt="">
+                    <img src="../images/earrings3.jpg" alt="">
+                    <img src="../images/earrings3.jpg" alt="">
+                    <img src="../images/earrings3.jpg" alt="">
                 </div>
             </div>
 
@@ -262,18 +297,25 @@
 
                 <span class="product-category">FLEUR DE LUNE</span>
 
-                <h1>>Nacre Baroque</h1>
+                <h1>Gouttes d'Ambre</h1>
 
-                <div class="product-price">€ 3.400</div>
+                <div class="product-price">
+                    € 3.100
+                </div>
 
                 <p class="product-description">
-                    An irregular, lustrous baroque pearl pendant
-                    hangs gracefully from an asymmetrical rose gold
-                    chain, celebrating the beauty of organic form.
-                    Its soft glow and distinctive shape create an effortlessly elegant, contemporary look.
+                    Teardrop earrings crafted from burnished yellow gold,
+                    each showcasing a glowing, hand-polished amber cabochon.
+                    The warm golden tones beautifully complement the rich,
+                    honey-colored amber, highlighting its natural depth and organic
+                    beauty. Elegant in their simplicity, these earrings offer a
+                    timeless blend of sophistication and artisanal charm, making
+                    them a versatile accessory for both everyday wear and special occasions.
+                </p>
 
                 <div class="product-options">
                     <label>Size</label>
+
                     <select>
                         <option>15</option>
                         <option>15.5</option>
@@ -283,16 +325,21 @@
                     </select>
                 </div>
 
-                <button class="add-to-cart">ADD TO BAG</button>
+                <button class="add-to-cart">
+                    ADD TO BAG
+                </button>
 
                 <div class="product-details">
+
                     <h3>Details</h3>
+
                     <ul>
-                        <li>22k gold</li>
-                        <li>Diamonds</li>
+                        <li>18K Gold</li>
+                        <li>Amber cabochon</li>
                         <li>Made in France</li>
-                        <li>Luxury Packaging Included</li>
+                        <li>Luxury Gift Packaging Included</li>
                     </ul>
+
                 </div>
 
             </div>

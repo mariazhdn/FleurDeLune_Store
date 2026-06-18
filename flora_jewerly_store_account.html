@@ -14,7 +14,7 @@
         rel="stylesheet">
 
     <style>
-        /* ── БАЗОВЫЕ СТИЛИ И ОБНУЛЕНИЕ ── */
+        /* ── RESET & BASE ── */
         *,
         *::before,
         *::after {
@@ -41,12 +41,13 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* ── СТИЛИ ХЕДЕРА ── */
+        /* ── HEADER ── */
         .header {
             width: 100%;
             border-bottom: 1px solid #e5e5e5;
             background-color: #ffffff;
-            position: relative;
+            position: sticky;
+            top: 0;
             z-index: 1000;
         }
 
@@ -184,7 +185,7 @@
             color: var(--green);
         }
 
-        /* ── КОНТЕНТ СТРАНИЦЫ АККАУНТА ── */
+        /* ── ACCOUNT PAGE ── */
         .account-page {
             padding: 5rem 8vw;
             max-width: 1440px;
@@ -211,7 +212,7 @@
             align-items: flex-start;
         }
 
-        /* Навигация личного кабинета */
+        /* Sidebar nav */
         .account-nav {
             background: var(--white);
             padding: 1.5rem 0;
@@ -245,7 +246,7 @@
             font-weight: 600;
         }
 
-        /* Блок информации пользователя */
+        /* Profile card */
         .profile-card {
             background: var(--white);
             padding: 3rem;
@@ -254,7 +255,7 @@
             border: 1px solid rgba(55, 71, 53, 0.05);
         }
 
-        /* Блок Аватарки */
+        /* Avatar */
         .profile-avatar-container {
             display: flex;
             align-items: center;
@@ -271,6 +272,7 @@
             object-fit: cover;
             border: 2px solid var(--green-light);
             background-color: var(--green-soft);
+            flex-shrink: 0;
         }
 
         .profile-avatar-meta h3 {
@@ -345,7 +347,7 @@
             cursor: not-allowed;
         }
 
-        /* ── СТИЛИ ФУТЕРА ── */
+        /* ── FOOTER ── */
         .bv-footer {
             background-color: #CFE1B9;
             color: #1c2e15;
@@ -383,35 +385,6 @@
             font-weight: 600;
         }
 
-        .bv-footer-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 40px;
-            padding: 50px 0;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-        }
-
-        .bv-footer-col h3 {
-            font-family: 'Cinzel', serif;
-            font-size: 14px;
-            margin-bottom: 25px;
-            color: #1c2e15;
-        }
-
-        .bv-footer-col ul {
-            list-style: none;
-        }
-
-        .bv-footer-col ul li {
-            margin-bottom: 15px;
-        }
-
-        .bv-footer-col ul li a {
-            color: #2c4224;
-            text-decoration: none;
-            font-weight: 600;
-        }
-
         .bv-footer-bottom {
             display: flex;
             justify-content: space-between;
@@ -421,7 +394,7 @@
             color: #405437;
         }
 
-        /* Drawer для мобильного меню */
+        /* Mobile drawer */
         .mobile-menu-drawer {
             position: fixed;
             top: 0;
@@ -437,6 +410,7 @@
             display: flex;
             flex-direction: column;
             gap: 15px;
+            overflow-y: auto;
         }
 
         .mobile-menu-drawer.open {
@@ -456,6 +430,15 @@
             text-transform: uppercase;
         }
 
+        .mobile-menu-title {
+            font-family: 'Cinzel', serif;
+            font-size: 11px;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--muted);
+            padding: 0 30px;
+        }
+
         .menu-overlay {
             position: fixed;
             top: 0;
@@ -471,9 +454,10 @@
             display: block;
         }
 
-        /* ── АДАПТИВНОСТЬ ── */
-        @media (max-width: 1024px) {
+        /* ── RESPONSIVE ── */
 
+        /* Tablet */
+        @media (max-width: 1024px) {
             .main-navigation,
             .desktop-info-links {
                 display: none;
@@ -502,21 +486,55 @@
                 grid-template-columns: 1fr;
                 gap: 2.5rem;
             }
-
-            .bv-footer-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
         }
 
+        /* Mobile (≤ 768px) */
         @media (max-width: 768px) {
+
+            /* Header */
+            .main-header {
+                padding: 14px 16px;
+                position: relative;
+            }
+
+            /* Burger on the left, logo centered, icons on the right */
+            .header-left {
+                flex: 0 0 auto;
+            }
+
+            .header-center {
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+                flex: none;
+            }
+
+            .logo {
+                font-size: 16px;
+                letter-spacing: 0.25em;
+            }
+
+            .header-right {
+                flex: 0 0 auto;
+                gap: 16px;
+            }
+
+            .icon {
+                width: 22px;
+                height: 22px;
+            }
+
+            /* Hide page title on mobile */
             .account-title {
                 display: none;
             }
 
+            /* Account page */
             .account-page {
-                padding: 2rem 16px;
+                padding: 1.5rem 16px 3rem;
             }
 
+            /* Sidebar nav → horizontal scrollable chips */
             .account-nav {
                 padding: 0;
                 background: transparent;
@@ -527,56 +545,132 @@
             .account-nav-list {
                 display: flex;
                 overflow-x: auto;
-                gap: 10px;
-                padding-bottom: 5px;
+                gap: 8px;
+                padding-bottom: 4px;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: none;
+            }
+
+            .account-nav-list::-webkit-scrollbar {
+                display: none;
+            }
+
+            .account-nav-list li {
+                flex-shrink: 0;
             }
 
             .account-nav-link {
                 white-space: nowrap;
-                padding: 0.75rem 1.25rem;
+                padding: 0.6rem 1.1rem;
                 background: var(--white);
-                border-radius: 4px;
-                border: 1px solid rgba(55, 71, 53, 0.1);
+                border-radius: 100px;
+                border: 1px solid rgba(55, 71, 53, 0.15);
+                border-left: 1px solid rgba(55, 71, 53, 0.15);
+                font-size: 0.75rem;
+                letter-spacing: 0.08em;
+            }
+
+            .account-nav-link:hover {
+                background: var(--green-soft);
+                border-color: var(--dark-green);
+                color: var(--dark-green);
             }
 
             .account-nav-link.active {
-                border-color: var(--dark-green);
                 background: var(--dark-green);
+                border-color: var(--dark-green);
                 color: var(--white);
+                font-weight: 600;
             }
 
-            /* Центрирование аватарки на мобильных */
+            /* Profile card */
+            .profile-card {
+                padding: 1.5rem 1rem;
+                border-radius: 8px;
+            }
+
+            /* Avatar block centered */
             .profile-avatar-container {
                 flex-direction: column;
+                align-items: center;
                 text-align: center;
-                gap: 1rem;
+                gap: 0.85rem;
+                margin-bottom: 1.75rem;
+                padding-bottom: 1.75rem;
             }
 
-            .profile-card {
-                padding: 2rem 1.25rem;
+            .profile-avatar {
+                width: 80px;
+                height: 80px;
             }
 
+            .profile-avatar-meta h3 {
+                font-size: 1.1rem;
+            }
+
+            .profile-section-title {
+                font-size: 1rem;
+                margin-bottom: 1.5rem;
+                text-align: center;
+            }
+
+            /* Info grid → single column */
             .info-grid {
                 grid-template-columns: 1fr;
-                gap: 1.5rem;
+                gap: 1.25rem;
             }
 
+            .info-label {
+                font-size: 0.72rem;
+            }
+
+            .info-value {
+                font-size: 0.9rem;
+            }
+
+            /* Edit button — full width */
+            .btn-edit {
+                display: block;
+                width: 100%;
+                text-align: center;
+                margin-top: 2rem;
+                padding: 1rem;
+                font-size: 0.6rem;
+                letter-spacing: 0.25em;
+            }
+
+            /* Footer */
             .bv-footer {
                 padding: 40px 20px 30px 20px;
+                margin-top: 3rem;
             }
 
             .bv-footer-top {
                 flex-direction: column;
-                gap: 25px;
+                align-items: flex-start;
+                gap: 20px;
             }
 
-            .bv-footer-grid {
-                grid-template-columns: 1fr;
+            .bv-social-links {
+                gap: 16px;
             }
 
             .bv-footer-bottom {
                 flex-direction: column;
-                gap: 20px;
+                align-items: flex-start;
+                gap: 12px;
+            }
+        }
+
+        /* Small mobile (≤ 390px) */
+        @media (max-width: 390px) {
+            .logo {
+                font-size: 14px;
+                letter-spacing: 0.18em;
+            }
+
+            .profile-card {
+                padding: 1.25rem 0.875rem;
             }
         }
     </style>
@@ -628,8 +722,7 @@
         <nav class="main-navigation">
             <ul class="nav-list">
                 <li><a href="/categories/rings/flora_jewerly_store_rings.html" class="nav-item">Rings</a></li>
-                <li><a href="/categories/bracelets/flora_jewerly_store_bracelets.html" class="nav-item">Bracelets</a>
-                </li>
+                <li><a href="/categories/bracelets/flora_jewerly_store_bracelets.html" class="nav-item">Bracelets</a></li>
                 <li><a href="/categories/earings/flora_jewerly_store_earings.html" class="nav-item">Earrings</a></li>
                 <li><a href="/categories/necklaces/flora_jewerly_store_necklaces.html" class="nav-item"
                         style="border-right: 1px solid rgba(0, 0, 0, 0.363)">Necklaces</a></li>
@@ -639,14 +732,12 @@
 
     <div class="menu-overlay" id="menuOverlay"></div>
     <div class="mobile-menu-drawer" id="mobileDrawer">
-        <h3 class="mobile-menu-title">Categories:</h3>
+        <h3 class="mobile-menu-title">Categories</h3>
         <ul class="mobile-nav-list">
             <li><a href="/categories/rings/flora_jewerly_store_rings.html" class="mobile-nav-item">Rings</a></li>
-            <li><a href="/categories/bracelets/flora_jewerly_store_bracelets.html" class="mobile-nav-item">Bracelets</a>
-            </li>
+            <li><a href="/categories/bracelets/flora_jewerly_store_bracelets.html" class="mobile-nav-item">Bracelets</a></li>
             <li><a href="/categories/earings/flora_jewerly_store_earings.html" class="mobile-nav-item">Earrings</a></li>
-            <li><a href="/categories/necklaces/flora_jewerly_store_necklaces.html" class="mobile-nav-item">Necklaces</a>
-            </li>
+            <li><a href="/categories/necklaces/flora_jewerly_store_necklaces.html" class="mobile-nav-item">Necklaces</a></li>
         </ul>
     </div>
 
@@ -654,12 +745,12 @@
         <h1 class="account-title">Maison Account</h1>
 
         <div class="account-container">
-            <nav class="account-nav">
+            <nav class="account-nav" aria-label="Account sections">
                 <ul class="account-nav-list">
-                    <li><a href="#" class="account-nav-link active">Personal Information</a></li>
-                    <li><a href="#" class="account-nav-link">Order History</a></li>
-                    <li><a href="#" class="account-nav-link">My Wishlist</a></li>
-                    <li><a href="#" class="account-nav-link">Preferences</a></li>
+                    <li><a class="account-nav-link active" style="cursor: not-allowed;">Personal Information</a></li>
+                    <li><a class="account-nav-link" style="cursor: not-allowed;">Order History</a></li>
+                    <li><a class="account-nav-link" style="cursor: not-allowed;">My Wishlist</a></li>
+                    <li><a class="account-nav-link" style="cursor: not-allowed;">Preferences</a></li>
                 </ul>
             </nav>
 
@@ -727,6 +818,7 @@
             burgerBtn.classList.toggle('active');
             mobileDrawer.classList.toggle('open');
             menuOverlay.classList.toggle('active');
+            document.body.style.overflow = mobileDrawer.classList.contains('open') ? 'hidden' : '';
         }
 
         burgerBtn.addEventListener('click', toggleMenu);

@@ -1,21 +1,526 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fleur De Lune</title>
-    
+
     <link rel="stylesheet" href="assets/styles/style.css">
-    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Montserrat:ital,wght@0,300;0,400;0,500;1,300&display=swap"
+        rel="stylesheet">
+
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --cream: #FFF4F7;
+            /* нежно-розовый */
+            --deep: #2F2A2D;
+            /* тёмный */
+            --dark-green: #374735;
+            /* основной зелёный */
+            --green: #7FA87C;
+            /* основной зелёный */
+            --green-light: #CFE1B9;
+            /* светло-зелёный */
+            --muted: #8A6D7C;
+            /* приглушённый розово-серый */
+            --white: #FFFFFF;
+            --pink: #fad9e4;
+            /* дополнительный розовый */
+            --pink-darker: #d8a0b1;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: var(--cream);
+            color: var(--deep);
+        }
+
+        /* ── HERO ── */
+        .hero {
+            position: relative;
+            height: 100vh;
+            min-height: 600px;
+            overflow: hidden;
+            background: #0f0b08;
+            display: flex;
+            align-items: flex-end;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.82;
+            object-position: center 20%;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom,
+                    transparent 30%,
+                    rgba(15, 11, 8, 0.55) 70%,
+                    rgba(15, 11, 8, 0.85) 100%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 0 8vw 6vh;
+            max-width: 680px;
+        }
+
+        .hero-eyebrow {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 300;
+            font-size: 0.7rem;
+            letter-spacing: 0.35em;
+            text-transform: uppercase;
+            color: var(--green-light);
+            margin-bottom: 1.2rem;
+        }
+
+        .hero-title {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(2.4rem, 5vw, 4.2rem);
+            font-weight: 400;
+            color: var(--white);
+            line-height: 1.08;
+            margin-bottom: 1.6rem;
+            letter-spacing: 0.03em;
+        }
+
+        .hero-title em {
+            font-style: italic;
+            color: var(--green-light);
+        }
+
+        .hero-sub {
+            font-size: 0.78rem;
+            font-weight: 300;
+            letter-spacing: 0.12em;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 2.4rem;
+            line-height: 1.8;
+            max-width: 380px;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            padding: 0.85rem 2.4rem;
+            border: 1px solid var(--green);
+            color: var(--green-light);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.65rem;
+            font-weight: 500;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            text-decoration: none;
+            background: transparent;
+            transition: background 0.35s, color 0.35s;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            background: var(--green);
+            color: var(--deep);
+        }
+
+        .btn-dark {
+            display: inline-block;
+            padding: 0.85rem 2.4rem;
+            border: 1px solid var(--deep);
+            color: var(--deep);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.65rem;
+            font-weight: 500;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            text-decoration: none;
+            background: transparent;
+            transition: background 0.35s, color 0.35s;
+            cursor: pointer;
+        }
+
+        .btn-dark:hover {
+            background: var(--deep);
+            color: var(--white);
+        }
+
+        /* ── MARQUEE ── */
+        .marquee-strip {
+            background: var(--green);
+            padding: 0.7rem 0;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .marquee-inner {
+            display: inline-flex;
+            animation: marquee 24s linear infinite;
+            gap: 0;
+        }
+
+        .marquee-text {
+            font-family: 'Cinzel', serif;
+            font-size: 0.65rem;
+            font-weight: 600;
+            letter-spacing: 0.35em;
+            text-transform: uppercase;
+            color: var(--deep);
+            padding: 0 3rem;
+        }
+
+        .marquee-dot {
+            color: var(--deep);
+            opacity: 0.5;
+        }
+
+        @keyframes marquee {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        /* ── COLLECTION SPLIT ── */
+        .collection-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .collection-panel {
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .collection-panel img {
+            width: 100%;
+            height: 75vh;
+            min-height: 480px;
+            object-fit: cover;
+            object-position: center 15%;
+            display: block;
+            transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .collection-panel:hover img {
+            transform: scale(1.04);
+        }
+
+        .collection-panel-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(15, 11, 8, 0.72) 0%, transparent 50%);
+            transition: background 0.4s;
+        }
+
+        .collection-panel:hover .collection-panel-overlay {
+            background: linear-gradient(to top, rgba(15, 11, 8, 0.82) 0%, rgba(15, 11, 8, 0.1) 60%);
+        }
+
+        .collection-panel-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 2.5rem 3rem;
+            z-index: 2;
+        }
+
+        .panel-tag {
+            font-size: 0.6rem;
+            letter-spacing: 0.35em;
+            text-transform: uppercase;
+            color: var(--green-light);
+            font-weight: 400;
+            margin-bottom: 0.6rem;
+            display: block;
+        }
+
+        .panel-title {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(1.4rem, 2.5vw, 2rem);
+            font-weight: 400;
+            color: var(--white);
+            margin-bottom: 1.4rem;
+            letter-spacing: 0.04em;
+            line-height: 1.15;
+        }
+
+        /* ── EDITORIAL BAND ── */
+        .editorial {
+            background: var(--white);
+            padding: 7rem 10vw;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            align-items: center;
+        }
+
+        .editorial-label {
+            font-size: 0.6rem;
+            letter-spacing: 0.4em;
+            text-transform: uppercase;
+            color: var(--green);
+            margin-bottom: 1.8rem;
+            display: block;
+        }
+
+        .editorial-title {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(1.6rem, 3vw, 2.6rem);
+            font-weight: 400;
+            color: var(--deep);
+            line-height: 1.15;
+            margin-bottom: 1.8rem;
+            letter-spacing: 0.03em;
+        }
+
+        .editorial-body {
+            font-size: 0.78rem;
+            font-weight: 500;
+            line-height: 2;
+            color: rgba(0, 0, 0, 0.6);
+            margin-bottom: 2.4rem;
+            max-width: 420px;
+        }
+
+        .editorial-visual {
+            position: relative;
+        }
+
+        .editorial-visual img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            object-position: center 10%;
+            display: block;
+        }
+
+        .editorial-accent-line {
+            position: absolute;
+            top: -1.5rem;
+            right: -1.5rem;
+            bottom: 1.5rem;
+            left: 1.5rem;
+            border: 1px solid rgba(255, 85, 241, 0.3);
+            pointer-events: none;
+        }
+
+        /* ── CATEGORIES ROW ── */
+        .categories {
+            padding: 5rem 8vw;
+            background: var(--cream);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3.5rem;
+        }
+
+        .section-eyebrow {
+            font-size: 0.6rem;
+            letter-spacing: 0.4em;
+            text-transform: uppercase;
+            color: var(--green);
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .section-title {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(1.4rem, 2.5vw, 2rem);
+            font-weight: 400;
+            letter-spacing: 0.05em;
+        }
+
+        .category-row {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2px;
+        }
+
+        .category-item {
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            background: #e8e2d8;
+        }
+
+        .category-item::after {
+            content: '';
+            display: block;
+            padding-top: 130%;
+        }
+
+        .category-placeholder {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(150deg, var(--pink) 0%, var(--pink-darker) 100%);
+            transition: transform 0.5s ease;
+        }
+
+        .category-item:hover .category-placeholder {
+            transform: scale(1.04);
+        }
+
+        .category-icon {
+            width: 48px;
+            height: 48px;
+            margin-bottom: 1rem;
+            opacity: 0.4;
+        }
+
+        .category-label {
+            font-family: 'Cinzel', serif;
+            font-size: 0.8rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--deep);
+            font-weight: 500;
+        }
+
+        .category-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(15, 11, 8, 0.5) 0%, transparent 60%);
+            opacity: 0;
+            transition: opacity 0.4s;
+            display: flex;
+            align-items: flex-end;
+            padding: 1.5rem;
+            z-index: 2;
+        }
+
+        .category-item:hover .category-overlay {
+            opacity: 1;
+        }
+
+        .category-cta {
+            font-size: 0.6rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--white);
+            border-bottom: 1px solid var(--green);
+            padding-bottom: 2px;
+            text-decoration: none;
+        }
+
+        /* ── PROMISE STRIP ── */
+        .promise {
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            background: var(--white);
+        }
+
+        .promise-item {
+            padding: 2.8rem 2rem;
+            text-align: center;
+            border-right: 1px solid rgba(0, 0, 0, 0.08);
+        }
+
+        .promise-item:last-child {
+            border-right: none;
+        }
+
+        .promise-icon {
+            width: 28px;
+            height: 28px;
+            margin: 0 auto 1rem;
+            opacity: 0.6;
+        }
+
+        .promise-title {
+            font-family: 'Cinzel', serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .promise-sub {
+            font-size: 0.68rem;
+            color: var(--muted);
+            line-height: 1.7;
+            font-weight: 500;
+        }
+
+
+        @media (max-width: 768px) {
+            .collection-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .editorial {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+                padding: 4rem 6vw;
+            }
+
+            .editorial-visual {
+                order: -1;
+            }
+
+            .editorial-accent-line {
+                display: none;
+            }
+
+            .category-row {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .promise {
+                grid-template-columns: 1fr;
+            }
+
+            .promise-item {
+                border-right: none;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+            }
+
+            .collection-panel-content {
+                padding: 1.5rem;
+            }
+        }
+    </style>
 </head>
+
 <body>
 
     <header class="header">
 
         <div class="main-header">
+            <button class="burger-btn" id="burgerToggle" aria-label="Toggle Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
             <div class="header-section header-left">
                 <div class="desktop-info-links">
                     <a href="/flora_jewerly_store_about_us.html">About Us</a>
@@ -24,25 +529,25 @@
                 </div>
             </div>
 
-            <button class="burger-btn" id="burgerToggle" aria-label="Toggle Menu">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-            </button>
-
             <div class="header-section header-center">
                 <a href="/flora_jewelry_store.html" class="logo">FLEUR DE LUNE</a>
             </div>
 
             <div class="header-section header-right">
                 <a href="/flora_jewelry_store_wishlist.html" class="header-icon-link" aria-label="Wishlist">
-                    <svg class="icon" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                    <svg class="icon" viewBox="0 0 24 24" style="fill: #000000; stroke: #000000;">
+                        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                    </svg>
+                </a>
+                <a href="/flora_jewelry_store_shopping_cart.html" class="header-icon-link" aria-label="Shopping Bag">
+                    <svg class="icon" viewBox="0 0 24 24" style="fill: #000000; stroke: #000000;">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M17 6h2c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H5c-1.1 0-2-.9-2-2V8c0-1.1.9-2 2-2h2c0-2.76 2.24-5 5-5s5 2.24 5 5zm-5-3c-1.66 0-3 1.34-3 3h6c0-1.66-1.34-3-3-3z" />
+                    </svg>
                 </a>
                 <a href="#" class="header-icon-link" aria-label="Account">
-                    <svg class="icon" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
-                </a>
-                <a href="#" class="header-icon-link" aria-label="Shopping Bag">
-                    <svg class="icon" viewBox="0 0 24 24"><path d="M19 6h-2c0-2.76-2.24-5-5-5S7 3.24 7 6H5c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-7-3c1.66 0 3 1.34 3 3H9c0-1.66 1.34-3 3-3zm7 17H5V8h2v2c0 .55.45 1 1 1s1-.45 1-1V8h6v2c0 .55.45 1 1 1s1-.45 1-1V8h2v12z"/></svg>
+                    <svg class="icon" viewBox="0 0 24 24" style="fill: #000000; stroke: #000000;">
+                        <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+                    </svg>
                 </a>
             </div>
         </div>
@@ -50,36 +555,197 @@
         <nav class="main-navigation">
             <ul class="nav-list">
                 <li><a href="/categories/rings/flora_jewerly_store_rings.html" class="nav-item">Rings</a></li>
-                <li><a href="#" class="nav-item">Bracelets</a></li>
+                <li><a href="/categories/bracelets/flora_jewerly_store_bracelets.html" class="nav-item">Bracelets</a>
+                </li>
                 <li><a href="/categories/earings/flora_jewerly_store_earings.html" class="nav-item">Earrings</a></li>
-                <li><a href="/categories/necklaces/flora_jewerly_store_necklaces.html" class="nav-item" style="border-right: 1px solid rgba(0, 0, 0, 0.363)">Necklaces</a></li>
+                <li><a href="/categories/necklaces/flora_jewerly_store_necklaces.html" class="nav-item"
+                        style="border-right: 1px solid rgba(0, 0, 0, 0.363)">Necklaces</a></li>
             </ul>
         </nav>
     </header>
 
+
     <div class="menu-overlay" id="menuOverlay"></div>
     <div class="mobile-menu-drawer" id="mobileDrawer">
         <h3 class="mobile-menu-title">Categories:</h3>
-    <ul class="mobile-nav-list">
-        <li><a href="/categories/rings/flora_jewerly_store_rings.html" class="mobile-nav-item">Rings</a></li>
-        <li><a href="#" class="mobile-nav-item">Bracelets</a></li>
-        <li><a href="/categories/earings/flora_jewerly_store_earings.html" class="mobile-nav-item">Earrings</a></li>
-        <li><a href="/categories/necklaces/flora_jewerly_store_necklaces.html" class="mobile-nav-item">Necklaces</a></li>
-    </ul>
-    <div class="mobile-sub-links">
-        <a href="/flora_jewerly_store_about_us.html" class="mobile-sub-item">About us</a>
-        <a href="/flora_jewerly_store_our_story.html class=mobile-sub-item">Our Story</a>
-        <a href="/flora_jewerly_store_contact_us.html" class="mobile-sub-item">Contact Us</a>
+        <ul class="mobile-nav-list">
+            <li><a href="/categories/rings/flora_jewerly_store_rings.html" class="mobile-nav-item">Rings</a></li>
+            <li><a href="/categories/bracelets/flora_jewerly_store_bracelets.html" class="mobile-nav-item">Bracelets</a>
+            </li>
+            <li><a href="/categories/earings/flora_jewerly_store_earings.html" class="mobile-nav-item">Earrings</a></li>
+            <li><a href="/categories/necklaces/flora_jewerly_store_necklaces.html" class="mobile-nav-item">Necklaces</a>
+            </li>
+        </ul>
+        <div class="mobile-sub-links">
+            <a href="/flora_jewerly_store_about_us.html" class="mobile-sub-item">About us</a>
+            <a href="/flora_jewerly_store_our_story.html class=mobile-sub-item">Our Story</a>
+            <a href="/flora_jewerly_store_contact_us.html" class="mobile-sub-item">Contact Us</a>
+        </div>
     </div>
+
+    <!-- HERO -->
+    <section class="hero">
+        <img class="hero-bg" src="assets/images/RedEarrings_main.png" alt="Fleur De Lune Campaign">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <span class="hero-eyebrow">New Collection — Été 2025</span>
+            <h1 class="hero-title">Jardin<br>de <em>Rubis</em></h1>
+            <p class="hero-sub">Rare red spinel and rose-cut diamonds set in 18k green — an ode to the garden at dusk.
+            </p>
+            <a href="#" class="btn-primary">Discover the Collection</a>
+        </div>
+    </section>
+
+    <!-- MARQUEE -->
+    <div class="marquee-strip">
+        <div class="marquee-inner">
+            <span class="marquee-text">Fine Jewellery</span>
+            <span class="marquee-text marquee-dot">·</span>
+            <span class="marquee-text">Handcrafted in Paris</span>
+            <span class="marquee-text marquee-dot">·</span>
+            <span class="marquee-text">Since 1984</span>
+            <span class="marquee-text marquee-dot">·</span>
+            <span class="marquee-text">Ethical Sourcing</span>
+            <span class="marquee-text marquee-dot">·</span>
+            <span class="marquee-text">Free Global Shipping</span>
+            <span class="marquee-text marquee-dot">·</span>
+            <!-- duplicate for seamless loop -->
+            <span class="marquee-text">Fine Jewellery</span>
+            <span class="marquee-text marquee-dot">·</span>
+            <span class="marquee-text">Handcrafted in Paris</span>
+            <span class="marquee-text marquee-dot">·</span>
+            <span class="marquee-text">Since 1984</span>
+            <span class="marquee-text marquee-dot">·</span>
+            <span class="marquee-text">Ethical Sourcing</span>
+            <span class="marquee-text marquee-dot">·</span>
+            <span class="marquee-text">Free Global Shipping</span>
+            <span class="marquee-text marquee-dot">·</span>
+        </div>
     </div>
-    
-    <main>
-        <h2>Content Area</h2>
-    </main>
+
+    <!-- EDITORIAL BAND -->
+    <section class="editorial">
+        <div class="editorial-text">
+            <span class="editorial-label">The Maison</span>
+            <h2 class="editorial-title">Crafted for<br>those who notice<br>everything.</h2>
+            <p class="editorial-body">Every piece begins as a sketch in our Paris atelier, then travels through the
+                hands of six master artisans before it reaches yours. We work with ethically sourced stones and recycled
+                precious metals — because beauty should leave no trace of harm.</p>
+            <a href="#" class="btn-primary" style="border-color: var(--green);color:var(--dark-green);">Our
+                Craftsmanship</a>
+        </div>
+        <div class="editorial-visual">
+            <img src="assets/images/GoldDiamondEarring_main.png" alt="Atelier craftsmanship">
+            <div class="editorial-accent-line"></div>
+        </div>
+    </section>
+
+    <!-- COLLECTION SPLIT -->
+    <section class="collection-grid">
+        <div class="collection-panel">
+            <img src="assets/images/Red_Earrings.png" alt="Jardin de Rubis Earrings">
+            <div class="collection-panel-overlay"></div>
+            <div class="collection-panel-content">
+                <span class="panel-tag">High Jewellery</span>
+                <h2 class="panel-title">Jardin de Rubis<br>Earrings</h2>
+                <a href="#" class="btn-primary">Explore</a>
+            </div>
+        </div>
+        <div class="collection-panel">
+            <img src="assets/images/Diamond-Gold_Earrings.png" alt="Lumière Dorée Earrings">
+            <div class="collection-panel-overlay"></div>
+            <div class="collection-panel-content">
+                <span class="panel-tag">Signature</span>
+                <h2 class="panel-title">Lumière Dorée<br>Earrings</h2>
+                <a href="#" class="btn-primary">Explore</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CATEGORIES -->
+    <section class="categories">
+        <div class="section-header">
+            <span class="section-eyebrow">Browse</span>
+            <h2 class="section-title">Explore the Collections</h2>
+        </div>
+        <div class="category-row">
+            <div class="category-item">
+                <div class="category-placeholder">
+                    <svg class="category-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+                        <circle cx="9" cy="9" r="6" />
+                        <path d="M15 15l4 4" />
+                    </svg>
+                    <span class="category-label">Rings</span>
+                </div>
+                <div class="category-overlay"><a href="categories/rings/flora_jewerly_store_rings.html"
+                        class="category-cta">Shop Now</a></div>
+            </div>
+            <div class="category-item">
+                <div class="category-placeholder">
+                    <svg class="category-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+                        <path d="M6 3c0 9 12 9 12 18" />
+                        <path d="M6 21c0-9 12-9 12-18" />
+                    </svg>
+                    <span class="category-label">Bracelets</span>
+                </div>
+                <div class="category-overlay"><a href="categories/bracelets/flora_jewerly_store_bracelets.html"
+                        class="category-cta">Shop Now</a></div>
+            </div>
+            <div class="category-item">
+                <div class="category-placeholder">
+                    <svg class="category-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+                        <path d="M12 2l1.5 5h5l-4 3 1.5 5L12 12l-4 3 1.5-5-4-3h5z" />
+                    </svg>
+                    <span class="category-label">Earrings</span>
+                </div>
+                <div class="category-overlay"><a href="categories/earrings/flora_jewerly_store_earrings.html"
+                        class="category-cta">Shop Now</a></div>
+            </div>
+            <div class="category-item">
+                <div class="category-placeholder">
+                    <svg class="category-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+                        <path d="M12 3a9 9 0 1 0 0 18" />
+                        <circle cx="12" cy="12" r="2" />
+                    </svg>
+                    <span class="category-label">Necklaces</span>
+                </div>
+                <div class="category-overlay"><a href="categories/necklaces/flora_jewerly_store_necklaces.html"
+                        class="category-cta">Shop Now</a></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROMISE -->
+    <div class="promise">
+        <div class="promise-item">
+            <svg class="promise-icon" viewBox="0 0 24 24" fill="none" stroke="var(--pink-darker)" stroke-width="2.5">
+                <rect x="3" y="8" width="18" height="13" rx="1" />
+                <path d="M16 8V5a4 4 0 0 0-8 0v3" />
+            </svg>
+            <p class="promise-title">Complimentary Gift Wrap</p>
+            <p class="promise-sub">Every order arrives in our signature ribbon box, ready to give.</p>
+        </div>
+        <div class="promise-item">
+            <svg class="promise-icon" viewBox="0 0 24 24" fill="none" stroke="var(--pink-darker)" stroke-width="2.5">
+                <circle cx="12" cy="12" r="10" />
+                <path d="M12 6v6l4 2" />
+            </svg>
+            <p class="promise-title">30-Day Returns</p>
+            <p class="promise-sub">Unworn pieces accepted within 30 days, no questions asked.</p>
+        </div>
+        <div class="promise-item">
+            <svg class="promise-icon" viewBox="0 0 24 24" fill="none" stroke="var(--pink-darker)" stroke-width="2.5">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+            </svg>
+            <p class="promise-title">Lifetime Guarantee</p>
+            <p class="promise-sub">Craftsmanship warranted for life. Resize, repair, restore — always.</p>
+        </div>
+    </div>
+
 
     <footer class="bv-footer">
         <div class="bv-footer-container">
-            
+
             <div class="bv-footer-top">
                 <a href="#" class="bv-newsletter-btn">Subscribe to our newsletters</a>
                 <div class="bv-social-links">
@@ -91,7 +757,7 @@
             </div>
 
             <div class="bv-footer-grid">
-                
+
                 <div class="bv-footer-col">
                     <h3>Maison Services <span class="acc-toggle">+</span></h3>
                     <ul>
@@ -138,7 +804,8 @@
             <div class="bv-footer-bottom">
                 <a href="#" class="bv-country-selector">
                     <svg viewBox="0 0 24 24">
-                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.53c-.26-.81-1-1.4-1.9-1.4h-1v-3c0-.55-.45-1-1-1h-6v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                        <path
+                            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.53c-.26-.81-1-1.4-1.9-1.4h-1v-3c0-.55-.45-1-1-1h-6v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z" />
                     </svg>
                     Country/Region: International English
                 </a>
@@ -149,6 +816,7 @@
 
         </div>
     </footer>
+
 
     <script>
         // Скрипт мобильного Хедера (Бургер)
@@ -175,6 +843,6 @@
             });
         });
     </script>
-
 </body>
+
 </html>

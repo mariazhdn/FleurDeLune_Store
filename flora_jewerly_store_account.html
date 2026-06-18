@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Profile — Fleur De Lune</title>
+
+    <link rel="stylesheet" href="../assets/styles/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
+
+    <style>
+        /* ── БАЗОВЫЕ СТИЛИ И ОБНУЛЕНИЕ ── */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --cream: #FFF4F7;
+            --deep: #2F2A2D;
+            --dark-green: #374735;
+            --green: #7FA87C;
+            --green-light: #CFE1B9;
+            --green-soft: #F0F5EC;
+            --muted: #8A6D7C;
+            --white: #FFFFFF;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: var(--cream);
+            color: var(--deep);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ── СТИЛИ ХЕДЕРА ── */
+        .header {
+            width: 100%;
+            border-bottom: 1px solid #e5e5e5;
+            background-color: #ffffff;
+            position: relative;
+            z-index: 1000;
+        }
+
+        .main-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px 10px 40px;
+        }
+
+        .header-section {
+            flex: 1;
+            display: flex;
+            align-items: center;
+        }
+
+        .header-left {
+            justify-content: flex-start;
+            gap: 25px;
+        }
+
+        .desktop-info-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .desktop-info-links a {
+            text-decoration: none;
+            color: #111111;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-family: Arial, sans-serif;
+            transition: color 0.2s ease;
+        }
+
+        .desktop-info-links a:hover {
+            color: var(--green);
+        }
+
+        .burger-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            padding: 5px 0;
+            z-index: 1100;
+        }
+
+        .burger-btn span {
+            display: block;
+            width: 22px;
+            height: 1px;
+            background-color: #111111;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .burger-btn.active span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+        .burger-btn.active span:nth-child(2) { opacity: 0; }
+        .burger-btn.active span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+        .header-center { justify-content: center; }
+
+        .logo {
+            font-size: 34px;
+            letter-spacing: 0.35em;
+            text-decoration: none;
+            color: #111111;
+            font-weight: 400;
+            font-family: "Times New Roman", Times, serif;
+            padding-left: 0.35em;
+            white-space: nowrap;
+        }
+
+        .header-right {
+            justify-content: flex-end;
+            gap: 25px;
+        }
+
+        .header-icon-link {
+            color: #111111;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .icon {
+            width: 20px;
+            height: 20px;
+            fill: none;
+            stroke: #111111;
+            stroke-width: 1.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .main-navigation {
+            display: flex;
+            justify-content: center;
+            padding-bottom: 15px;
+        }
+
+        .nav-list {
+            display: flex;
+            list-style: none;
+            padding-top: 15px;
+        }
+
+        .nav-item {
+            text-decoration: none;
+            color: #111111;
+            font-size: 13px;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            font-weight: 400;
+            padding: 5px 65px;
+            position: relative;
+            transition: color 0.3s ease;
+            border-left: 1px solid rgba(0, 0, 0, 0.363);
+        }
+
+        .nav-item:hover { color: var(--green); }
+
+        /* ── КОНТЕНТ СТРАНИЦЫ АККАУНТА ── */
+        .account-page {
+            padding: 5rem 8vw;
+            max-width: 1440px;
+            margin: 0 auto;
+            min-height: 70vh;
+        }
+
+        .account-title {
+            font-family: 'Cinzel', serif;
+            font-size: 2.2rem;
+            font-weight: 400;
+            letter-spacing: 0.05em;
+            margin-bottom: 3rem;
+            border-bottom: 1px solid var(--green-light);
+            padding-bottom: 1.5rem;
+            text-transform: uppercase;
+            color: var(--dark-green);
+        }
+
+        .account-container {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 4rem;
+            align-items: flex-start;
+        }
+
+        /* Навигация личного кабинета */
+        .account-nav {
+            background: var(--white);
+            padding: 1.5rem 0;
+            border-radius: 6px;
+            box-shadow: 0 4px 20px rgba(55, 71, 53, 0.03);
+            border: 1px solid rgba(55, 71, 53, 0.05);
+        }
+
+        .account-nav-list {
+            list-style: none;
+        }
+
+        .account-nav-link {
+            display: block;
+            padding: 1rem 2rem;
+            color: var(--deep);
+            text-decoration: none;
+            font-size: 0.85rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border-left: 3px solid transparent;
+        }
+
+        .account-nav-link.active,
+        .account-nav-link:hover {
+            color: var(--dark-green);
+            background: var(--green-soft);
+            border-left-color: var(--dark-green);
+            font-weight: 600;
+        }
+
+        /* Блок информации пользователя */
+        .profile-card {
+            background: var(--white);
+            padding: 3rem;
+            border-radius: 6px;
+            box-shadow: 0 4px 20px rgba(55, 71, 53, 0.04);
+            border: 1px solid rgba(55, 71, 53, 0.05);
+        }
+
+        /* Блок Аватарки */
+        .profile-avatar-container {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--green-soft);
+        }
+
+        .profile-avatar {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--green-light);
+            background-color: var(--green-soft);
+        }
+
+        .profile-avatar-meta h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: var(--dark-green);
+            letter-spacing: 0.03em;
+            margin-bottom: 0.25rem;
+        }
+
+        .profile-avatar-meta p {
+            font-size: 0.8rem;
+            color: var(--muted);
+            letter-spacing: 0.05em;
+        }
+
+        .profile-section-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.2rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            margin-bottom: 2rem;
+            color: var(--dark-green);
+            text-transform: uppercase;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .info-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+
+        .info-label {
+            font-family: 'Cinzel', serif;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--dark-green);
+            font-weight: 600;
+        }
+
+        .info-value {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--deep);
+            padding: 0.6rem 0;
+            border-bottom: 1px solid rgba(55, 71, 53, 0.1);
+            letter-spacing: 0.02em;
+        }
+
+        .btn-edit {
+            margin-top: 3rem;
+            display: inline-block;
+            padding: 0.85rem 2.4rem;
+            border: 1px solid var(--dark-green);
+            color: var(--white);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.65rem;
+            font-weight: 600;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            text-decoration: none;
+            background: var(--dark-green);
+            transition: all 0.35s ease;
+            cursor: not-allowed;
+        }
+
+        /* ── СТИЛИ ФУТЕРА ── */
+        .bv-footer {
+            background-color: #CFE1B9;
+            color: #1c2e15;
+            padding: 60px 40px 30px 40px;
+            border-top: 1px solid rgba(0,0,0,0.08);
+            letter-spacing: 0.1em;
+            font-size: 12px;
+            text-transform: uppercase;
+            font-weight: 500;
+            margin-top: 6rem;
+        }
+
+        .bv-footer-container { max-width: 1440px; margin: 0 auto; }
+        .bv-footer-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 40px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+        }
+
+        .bv-social-links { display: flex; gap: 20px; }
+        .bv-social-links a, .bv-newsletter-btn { color: #1c2e15; text-decoration: none; font-weight: 600; }
+
+        .bv-footer-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            padding: 50px 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+        }
+
+        .bv-footer-col h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 14px;
+            margin-bottom: 25px;
+            color: #1c2e15;
+        }
+
+        .bv-footer-col ul { list-style: none; }
+        .bv-footer-col ul li { margin-bottom: 15px; }
+        .bv-footer-col ul li a { color: #2c4224; text-decoration: none; font-weight: 600; }
+
+        .bv-footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 30px;
+            font-size: 11px;
+            color: #405437;
+        }
+
+        /* Drawer для мобильного меню */
+        .mobile-menu-drawer {
+            position: fixed;
+            top: 0;
+            left: -100%;
+            width: 80%;
+            max-width: 320px;
+            height: 100vh;
+            background-color: #ffffff;
+            box-shadow: 5px 0 15px rgba(0, 0, 0, 0.05);
+            z-index: 1050;
+            transition: left 0.4s ease;
+            padding: 90px 0 40px 0;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .mobile-menu-drawer.open { left: 0; }
+
+        .mobile-nav-list { list-style: none; }
+        .mobile-nav-item { text-decoration: none; color: #111111; font-size: 15px; display: block; padding: 18px 30px; text-transform: uppercase; }
+
+        .menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.2);
+            z-index: 1040;
+            display: none;
+        }
+        .menu-overlay.active { display: block; }
+
+        /* ── АДАПТИВНОСТЬ ── */
+        @media (max-width: 1024px) {
+            .main-navigation, .desktop-info-links { display: none; }
+            .burger-btn { display: flex; }
+            .main-header { padding: 15px 20px; }
+            .logo { font-size: 18px; text-align: center; }
+        }
+
+        @media (max-width: 992px) {
+            .account-page { padding: 3rem 4vw; }
+            .account-container { grid-template-columns: 1fr; gap: 2.5rem; }
+            .bv-footer-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            .account-title { display: none; }
+            .account-page { padding: 2rem 16px; }
+            
+            .account-nav { padding: 0; background: transparent; box-shadow: none; border: none;}
+            .account-nav-list { display: flex; overflow-x: auto; gap: 10px; padding-bottom: 5px; }
+            .account-nav-link { 
+                white-space: nowrap; 
+                padding: 0.75rem 1.25rem; 
+                background: var(--white); 
+                border-radius: 4px;
+                border: 1px solid rgba(55, 71, 53, 0.1);
+            }
+            .account-nav-link.active {
+                border-color: var(--dark-green);
+                background: var(--dark-green);
+                color: var(--white);
+            }
+
+            /* Центрирование аватарки на мобильных */
+            .profile-avatar-container {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+            }
+
+            .profile-card { padding: 2rem 1.25rem; }
+            .info-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+            
+            .bv-footer { padding: 40px 20px 30px 20px; }
+            .bv-footer-top { flex-direction: column; gap: 25px; }
+            .bv-footer-grid { grid-template-columns: 1fr; }
+            .bv-footer-bottom { flex-direction: column; gap: 20px; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="header">
+        <div class="main-header">
+            <button class="burger-btn" id="burgerToggle" aria-label="Toggle Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <div class="header-section header-left">
+                <div class="desktop-info-links">
+                    <a href="/flora_jewerly_store_about_us.html">About Us</a>
+                    <a href="/flora_jewerly_store_our_story.html">Our Story</a>
+                    <a href="/flora_jewerly_store_contact_us.html">Contact Us</a>
+                </div>
+            </div>
+
+            <div class="header-section header-center">
+                <a href="/flora_jewelry_store.html" class="logo">FLEUR DE LUNE</a>
+            </div>
+
+            <div class="header-section header-right">
+                <a href="/flora_jewelry_store_wishlist.html" class="header-icon-link" aria-label="Wishlist">
+                    <svg class="icon" viewBox="0 0 24 24" style="fill: #000000; stroke: #000000;">
+                        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                    </svg>
+                </a>
+                <a href="/flora_jewelry_store_shopping_cart.html" class="header-icon-link" aria-label="Shopping Bag">
+                    <svg class="icon" viewBox="0 0 24 24" style="fill: #000000; stroke: #000000;">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M17 6h2c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H5c-1.1 0-2-.9-2-2V8c0-1.1.9-2 2-2h2c0-2.76 2.24-5 5-5s5 2.24 5 5zm-5-3c-1.66 0-3 1.34-3 3h6c0-1.66-1.34-3-3-3z" />
+                    </svg>
+                </a>
+                <a href="/account.html" class="header-icon-link" aria-label="Account">
+                    <svg class="icon" viewBox="0 0 24 24" style="fill: #40916C; stroke: #40916C;">
+                        <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+
+        <nav class="main-navigation">
+            <ul class="nav-list">
+                <li><a href="/categories/rings/flora_jewerly_store_rings.html" class="nav-item">Rings</a></li>
+                <li><a href="/categories/bracelets/flora_jewerly_store_bracelets.html" class="nav-item">Bracelets</a></li>
+                <li><a href="/categories/earings/flora_jewerly_store_earings.html" class="nav-item">Earrings</a></li>
+                <li><a href="/categories/necklaces/flora_jewerly_store_necklaces.html" class="nav-item" style="border-right: 1px solid rgba(0, 0, 0, 0.363)">Necklaces</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="menu-overlay" id="menuOverlay"></div>
+    <div class="mobile-menu-drawer" id="mobileDrawer">
+        <h3 class="mobile-menu-title">Categories:</h3>
+        <ul class="mobile-nav-list">
+            <li><a href="/categories/rings/flora_jewerly_store_rings.html" class="mobile-nav-item">Rings</a></li>
+            <li><a href="/categories/bracelets/flora_jewerly_store_bracelets.html" class="mobile-nav-item">Bracelets</a></li>
+            <li><a href="/categories/earings/flora_jewerly_store_earings.html" class="mobile-nav-item">Earrings</a></li>
+            <li><a href="/categories/necklaces/flora_jewerly_store_necklaces.html" class="mobile-nav-item">Necklaces</a></li>
+        </ul>
+    </div>
+
+    <main class="account-page">
+        <h1 class="account-title">Maison Account</h1>
+
+        <div class="account-container">
+            <nav class="account-nav">
+                <ul class="account-nav-list">
+                    <li><a href="#" class="account-nav-link active">Personal Information</a></li>
+                    <li><a href="#" class="account-nav-link">Order History</a></li>
+                    <li><a href="#" class="account-nav-link">My Wishlist</a></li>
+                    <li><a href="#" class="account-nav-link">Preferences</a></li>
+                </ul>
+            </nav>
+
+            <div class="profile-card">
+                <div class="profile-avatar-container">
+                    <img src="assets/images/PFP.jpg" alt="Profile Photo" class="profile-avatar">
+                    <div class="profile-avatar-meta">
+                        <h3>Alexander Tkach</h3>
+                        <p>Maison Member since 2024</p>
+                    </div>
+                </div>
+
+                <h2 class="profile-section-title">Profile Details</h2>
+                
+                <div class="info-grid">
+                    <div class="info-group">
+                        <span class="info-label">Full Name</span>
+                        <span class="info-value">Alexander Tkach</span>
+                    </div>
+
+                    <div class="info-group">
+                        <span class="info-label">Email Address</span>
+                        <span class="info-value">alexander.tkach@example.com</span>
+                    </div>
+
+                    <div class="info-group">
+                        <span class="info-label">Phone Number</span>
+                        <span class="info-value">+380 50 123 4567</span>
+                    </div>
+
+                    <div class="info-group">
+                        <span class="info-label">Default Shipping Address</span>
+                        <span class="info-value">Deribasivska St, 1, Odesa, Ukraine</span>
+                    </div>
+                </div>
+
+                <button type="button" class="btn-edit" onclick="return false;">Edit Information</button>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bv-footer">
+        <div class="bv-footer-container">
+            <div class="bv-footer-top">
+                <a href="#" class="bv-newsletter-btn">Subscribe to our newsletters</a>
+                <div class="bv-social-links">
+                    <a href="#">Instagram</a>
+                    <a href="#">Facebook</a>
+                    <a href="#">YouTube</a>
+                </div>
+            </div>
+            <div class="bv-footer-bottom">
+                <span>Country: International English</span>
+                <span>&copy; 1984 FLEUR DE LUNE</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const burgerBtn = document.getElementById('burgerToggle');
+        const mobileDrawer = document.getElementById('mobileDrawer');
+        const menuOverlay = document.getElementById('menuOverlay');
+
+        function toggleMenu() {
+            burgerBtn.classList.toggle('active');
+            mobileDrawer.classList.toggle('open');
+            menuOverlay.classList.toggle('active');
+        }
+
+        burgerBtn.addEventListener('click', toggleMenu);
+        menuOverlay.addEventListener('click', toggleMenu);
+    </script>
+</body>
+
+</html>

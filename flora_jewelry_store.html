@@ -22,17 +22,24 @@
             padding: 0;
         }
 
-:root {
-    --cream: #FFF4F7;       /* нежно-розовый */
-    --deep: #2F2A2D;        /* тёмный */
-    --dark-green: #374735;        /* основной зелёный */
-    --green: #7FA87C;        /* основной зелёный */
-    --green-light: #CFE1B9;  /* светло-зелёный */
-    --muted: #8A6D7C;       /* приглушённый розово-серый */
-    --white: #FFFFFF;
-    --pink: #fad9e4;        /* дополнительный розовый */
-    --pink-darker: #d8a0b1;
-}
+        :root {
+            --cream: #FFF4F7;
+            /* нежно-розовый */
+            --deep: #2F2A2D;
+            /* тёмный */
+            --dark-green: #374735;
+            /* основной зелёный */
+            --green: #7FA87C;
+            /* основной зелёный */
+            --green-light: #CFE1B9;
+            /* светло-зелёный */
+            --muted: #8A6D7C;
+            /* приглушённый розово-серый */
+            --white: #FFFFFF;
+            --pink: #fad9e4;
+            /* дополнительный розовый */
+            --pink-darker: #d8a0b1;
+        }
 
         body {
             font-family: 'Montserrat', sans-serif;
@@ -454,14 +461,14 @@
             letter-spacing: 0.2em;
             text-transform: uppercase;
             margin-bottom: 0.5rem;
-            font-weight: 500;
+            font-weight: 600;
         }
 
         .promise-sub {
             font-size: 0.68rem;
             color: var(--muted);
             line-height: 1.7;
-            font-weight: 300;
+            font-weight: 500;
         }
 
         /* HEADER & FOOTER passthrough — keep from original */
@@ -532,21 +539,18 @@
 
             <div class="header-section header-right">
                 <a href="/flora_jewelry_store_wishlist.html" class="header-icon-link" aria-label="Wishlist">
-                    <svg class="icon" viewBox="0 0 24 24">
-                        <path
-                            d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                    <svg class="icon" viewBox="0 0 24 24" style="fill: #000000; stroke: #000000;">
+                        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                    </svg>
+                </a>
+                <a href="/flora_jewelry_store_shopping_cart.html" class="header-icon-link" aria-label="Shopping Bag">
+                    <svg class="icon" viewBox="0 0 24 24" style="fill: #000000; stroke: #000000;">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M17 6h2c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H5c-1.1 0-2-.9-2-2V8c0-1.1.9-2 2-2h2c0-2.76 2.24-5 5-5s5 2.24 5 5zm-5-3c-1.66 0-3 1.34-3 3h6c0-1.66-1.34-3-3-3z" />
                     </svg>
                 </a>
                 <a href="#" class="header-icon-link" aria-label="Account">
-                    <svg class="icon" viewBox="0 0 24 24">
-                        <path
-                            d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
-                    </svg>
-                </a>
-                <a href="#" class="header-icon-link" aria-label="Shopping Bag">
-                    <svg class="icon" viewBox="0 0 24 24">
-                        <path
-                            d="M19 6h-2c0-2.76-2.24-5-5-5S7 3.24 7 6H5c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-7-3c1.66 0 3 1.34 3 3H9c0-1.66 1.34-3 3-3zm7 17H5V8h2v2c0 .55.45 1 1 1s1-.45 1-1V8h6v2c0 .55.45 1 1 1s1-.45 1-1V8h2v12z" />
+                    <svg class="icon" viewBox="0 0 24 24" style="fill: #000000; stroke: #000000;">
+                        <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
                     </svg>
                 </a>
             </div>
@@ -564,7 +568,7 @@
         </nav>
     </header>
 
-    
+
     <div class="menu-overlay" id="menuOverlay"></div>
     <div class="mobile-menu-drawer" id="mobileDrawer">
         <h3 class="mobile-menu-title">Categories:</h3>
@@ -585,9 +589,7 @@
 
     <!-- HERO -->
     <section class="hero">
-        <img class="hero-bg"
-            src="assets/images/RedEarrings_main.png"
-            alt="Fleur De Lune Campaign">
+        <img class="hero-bg" src="assets/images/RedEarrings_main.png" alt="Fleur De Lune Campaign">
         <div class="hero-overlay"></div>
         <div class="hero-content">
             <span class="hero-eyebrow">New Collection — Été 2025</span>
@@ -633,7 +635,8 @@
             <p class="editorial-body">Every piece begins as a sketch in our Paris atelier, then travels through the
                 hands of six master artisans before it reaches yours. We work with ethically sourced stones and recycled
                 precious metals — because beauty should leave no trace of harm.</p>
-            <a href="#" class="btn-primary" style="border-color: var(--green);color:var(--dark-green);">Our Craftsmanship</a>
+            <a href="#" class="btn-primary" style="border-color: var(--green);color:var(--dark-green);">Our
+                Craftsmanship</a>
         </div>
         <div class="editorial-visual">
             <img src="assets/images/GoldDiamondEarring_main.png" alt="Atelier craftsmanship">
@@ -641,7 +644,7 @@
         </div>
     </section>
 
-     <!-- COLLECTION SPLIT -->
+    <!-- COLLECTION SPLIT -->
     <section class="collection-grid">
         <div class="collection-panel">
             <img src="assets/images/Red_Earrings.png" alt="Jardin de Rubis Earrings">
@@ -653,7 +656,7 @@
             </div>
         </div>
         <div class="collection-panel">
-            <img src="assets/images/Diamond-Gold_Earrings.png"alt="Lumière Dorée Earrings">
+            <img src="assets/images/Diamond-Gold_Earrings.png" alt="Lumière Dorée Earrings">
             <div class="collection-panel-overlay"></div>
             <div class="collection-panel-content">
                 <span class="panel-tag">Signature</span>
@@ -678,7 +681,8 @@
                     </svg>
                     <span class="category-label">Rings</span>
                 </div>
-                <div class="category-overlay"><a href="categories/rings/flora_jewerly_store_rings.html" class="category-cta">Shop Now</a></div>
+                <div class="category-overlay"><a href="categories/rings/flora_jewerly_store_rings.html"
+                        class="category-cta">Shop Now</a></div>
             </div>
             <div class="category-item">
                 <div class="category-placeholder">
@@ -688,7 +692,8 @@
                     </svg>
                     <span class="category-label">Bracelets</span>
                 </div>
-                <div class="category-overlay"><a href="categories/bracelets/flora_jewerly_store_bracelets.html" class="category-cta">Shop Now</a></div>
+                <div class="category-overlay"><a href="categories/bracelets/flora_jewerly_store_bracelets.html"
+                        class="category-cta">Shop Now</a></div>
             </div>
             <div class="category-item">
                 <div class="category-placeholder">
@@ -697,7 +702,8 @@
                     </svg>
                     <span class="category-label">Earrings</span>
                 </div>
-                <div class="category-overlay"><a href="categories/earrings/flora_jewerly_store_earrings.html" class="category-cta">Shop Now</a></div>
+                <div class="category-overlay"><a href="categories/earrings/flora_jewerly_store_earrings.html"
+                        class="category-cta">Shop Now</a></div>
             </div>
             <div class="category-item">
                 <div class="category-placeholder">
@@ -707,7 +713,8 @@
                     </svg>
                     <span class="category-label">Necklaces</span>
                 </div>
-                <div class="category-overlay"><a href="categories/necklaces/flora_jewerly_store_necklaces.html" class="category-cta">Shop Now</a></div>
+                <div class="category-overlay"><a href="categories/necklaces/flora_jewerly_store_necklaces.html"
+                        class="category-cta">Shop Now</a></div>
             </div>
         </div>
     </section>

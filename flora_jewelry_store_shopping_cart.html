@@ -1,0 +1,1118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Shopping Bag — Fleur De Lune</title>
+
+    <link rel="stylesheet" href="/assets/styles/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap"
+        rel="stylesheet">
+
+    <style>
+        /* ── БАЗОВЫЕ СТИЛИ И ОБНУЛЕНИЕ (Из style.css) ── */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --cream: #FFF4F7;
+            --deep: #2F2A2D;
+            --dark-green: #374735;
+            --green: #7FA87C;
+            --green-light: #CFE1B9;
+            --green-soft: #F0F5EC;
+            /* Мягкий шалфейный для карточек */
+            --muted: #8A6D7C;
+            --white: #FFFFFF;
+            --pink: #fad9e4;
+            --pink-darker: #d8a0b1;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: var(--cream);
+            color: var(--deep);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ── СТИЛИ ХЕДЕРА ── */
+        .header {
+            width: 100%;
+            border-bottom: 1px solid #e5e5e5;
+            background-color: #ffffff;
+            position: relative;
+            z-index: 1000;
+        }
+
+        .main-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px 10px 40px;
+        }
+
+        .header-section {
+            flex: 1;
+            display: flex;
+            align-items: center;
+        }
+
+        .header-left {
+            justify-content: flex-start;
+            gap: 25px;
+        }
+
+        .desktop-info-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .desktop-info-links a {
+            text-decoration: none;
+            color: #111111;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-family: Arial, sans-serif;
+            transition: color 0.2s ease;
+        }
+
+        .desktop-info-links a:hover {
+            color: var(--green);
+        }
+
+        .burger-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            padding: 5px 0;
+            z-index: 1100;
+        }
+
+        .burger-btn span {
+            display: block;
+            width: 22px;
+            height: 1px;
+            background-color: #111111;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .burger-btn.active span:nth-child(1) {
+            transform: translateY(6px) rotate(45deg);
+        }
+
+        .burger-btn.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .burger-btn.active span:nth-child(3) {
+            transform: translateY(-6px) rotate(-45deg);
+        }
+
+        .header-center {
+            justify-content: center;
+        }
+
+        .logo {
+            font-size: 34px;
+            letter-spacing: 0.35em;
+            text-decoration: none;
+            color: #111111;
+            font-weight: 400;
+            font-family: "Times New Roman", Times, serif;
+            padding-left: 0.35em;
+            white-space: nowrap;
+        }
+
+        .header-right {
+            justify-content: flex-end;
+            gap: 25px;
+        }
+
+        .header-icon-link {
+            color: #111111;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .icon {
+            width: 20px;
+            height: 20px;
+            fill: none;
+            stroke: #111111;
+            stroke-width: 1.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .main-navigation {
+            display: flex;
+            justify-content: center;
+            padding-bottom: 15px;
+        }
+
+        .nav-list {
+            display: flex;
+            list-style: none;
+            padding-top: 15px;
+        }
+
+        .nav-item {
+            text-decoration: none;
+            color: #111111;
+            font-size: 13px;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            font-weight: 400;
+            padding: 5px 65px;
+            position: relative;
+            transition: color 0.3s ease;
+            border-left: 1px solid rgba(0, 0, 0, 0.363);
+        }
+
+        .nav-item:hover {
+            color: var(--green);
+        }
+
+        .nav-item::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background-color: var(--green);
+            transition: width 0.3s ease;
+        }
+
+        .nav-item:hover::after {
+            width: 100%;
+        }
+
+        /* ── КНОПКИ ── */
+        .btn-primary {
+            display: inline-block;
+            padding: 0.85rem 2.4rem;
+            border: 1px solid var(--dark-green);
+            color: var(--white);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.65rem;
+            font-weight: 600;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            text-decoration: none;
+            background: var(--dark-green);
+            transition: background 0.35s, color 0.35s, border-color 0.35s;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        /* ── КОНТЕНТ СТРАНИЦЫ КОРЗИНЫ ── */
+        .cart-page {
+            padding: 5rem 8vw;
+            max-width: 1440px;
+            margin: 0 auto;
+        }
+
+        .cart-title {
+            font-family: 'Cinzel', serif;
+            font-size: 2.2rem;
+            font-weight: 400;
+            letter-spacing: 0.05em;
+            margin-bottom: 3rem;
+            border-bottom: 1px solid var(--green-light);
+            padding-bottom: 1.5rem;
+            text-transform: uppercase;
+            color: var(--dark-green);
+        }
+
+        .cart-container {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 4rem;
+            align-items: flex-start;
+        }
+
+        /* Список товаров */
+        .cart-items {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .cart-item {
+            display: flex;
+            gap: 2rem;
+            background: var(--green-soft);
+            padding: 2rem;
+            border-radius: 6px;
+            box-shadow: 0 4px 20px rgba(55, 71, 53, 0.04);
+            position: relative;
+            border-left: 4px solid var(--green);
+        }
+
+        .cart-item-image {
+            width: 130px;
+            height: 160px;
+            background-color: var(--white);
+            border-radius: 4px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            flex-shrink: 0;
+        }
+
+        .cart-item-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .cart-item-details {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .cart-item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        .item-name {
+            font-family: 'Cinzel', serif;
+            font-size: 1.2rem;
+            font-weight: 500;
+            letter-spacing: 0.03em;
+            margin-bottom: 0.4rem;
+            color: var(--dark-green);
+        }
+
+        .item-meta {
+            font-size: 0.75rem;
+            color: #556253;
+            letter-spacing: 0.05em;
+            line-height: 1.5;
+        }
+
+        .item-price {
+            font-family: 'Cinzel', serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--dark-green);
+            white-space: nowrap;
+        }
+
+        .cart-item-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1.5rem;
+            gap: 15px;
+        }
+
+        .quantity-selector {
+            display: flex;
+            align-items: center;
+            border: 1px solid rgba(55, 71, 53, 0.2);
+            background: var(--white);
+            border-radius: 3px;
+        }
+
+        .qty-btn {
+            background: none;
+            border: none;
+            width: 35px;
+            height: 35px;
+            font-size: 1rem;
+            color: var(--dark-green);
+            cursor: not-allowed;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .qty-value {
+            width: 40px;
+            text-align: center;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--dark-green);
+        }
+
+        .remove-btn {
+            background: none;
+            border: none;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.7rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: #768a73;
+            cursor: not-allowed;
+            border-bottom: 1px solid transparent;
+            transition: color 0.3s;
+            white-space: nowrap;
+        }
+
+        .remove-btn:hover {
+            color: var(--dark-green);
+        }
+
+        /* Блок сумм заказа */
+        .cart-summary {
+            background: var(--dark-green);
+            color: var(--white);
+            padding: 2.5rem;
+            border-radius: 6px;
+            box-shadow: 0 10px 30px rgba(55, 71, 53, 0.15);
+        }
+
+        .summary-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.3rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+            padding-bottom: 0.75rem;
+            color: var(--green-light);
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1.2rem;
+            font-size: 0.85rem;
+            letter-spacing: 0.05em;
+            color: var(--green-soft);
+        }
+
+        .summary-row.total {
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            padding-top: 1.5rem;
+            margin-top: 1.5rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+            font-family: 'Cinzel', serif;
+            color: var(--white);
+        }
+
+        .promo-box {
+            display: flex;
+            margin-top: 2rem;
+            margin-bottom: 1.5rem;
+            gap: 5px;
+        }
+
+        .promo-input {
+            flex: 1;
+            padding: 0.7rem 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.08);
+            color: var(--white);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.75rem;
+            letter-spacing: 0.05em;
+            outline: none;
+            border-radius: 3px;
+            width: 100%;
+        }
+
+        .promo-input::placeholder {
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        .promo-btn {
+            background: var(--green-light);
+            color: var(--dark-green);
+            border: none;
+            padding: 0 1.5rem;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            cursor: not-allowed;
+            border-radius: 3px;
+        }
+
+        .checkout-btn {
+            width: 100%;
+            margin-top: 1rem;
+            background: var(--white);
+            color: var(--dark-green);
+            border-color: var(--white);
+            font-weight: 700;
+            cursor: not-allowed;
+            border-radius: 3px;
+        }
+
+        .checkout-btn:hover {
+            background: var(--green-light);
+            border-color: var(--green-light);
+        }
+
+        /* ── СТИЛИ ФУТЕРА ── */
+        .bv-footer {
+            background-color: #CFE1B9;
+            color: #1c2e15;
+            padding: 60px 40px 30px 40px;
+            border-top: 1px solid rgba(0, 0, 0, 0.08);
+            letter-spacing: 0.1em;
+            font-size: 12px;
+            text-transform: uppercase;
+            font-weight: 500;
+            position: relative;
+            overflow: hidden;
+            margin-top: 6rem;
+        }
+
+        .bv-footer-container {
+            max-width: 1440px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .bv-footer-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 40px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+        }
+
+        .bv-newsletter-btn,
+        .bv-social-links a {
+            color: #1c2e15;
+            text-decoration: none;
+            font-weight: 600;
+            transition: opacity 0.3s ease;
+        }
+
+        .bv-newsletter-btn:hover,
+        .bv-social-links a:hover {
+            opacity: 0.6;
+        }
+
+        .bv-social-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .bv-footer-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            padding: 50px 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+        }
+
+        .bv-footer-col h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 25px;
+            letter-spacing: 0.15em;
+            color: #1c2e15;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .bv-footer-col h3 .acc-toggle {
+            display: none;
+            font-size: 16px;
+            font-weight: 400;
+            transition: transform 0.3s ease;
+        }
+
+        .bv-footer-col ul {
+            list-style: none;
+        }
+
+        .bv-footer-col ul li {
+            margin-bottom: 15px;
+        }
+
+        .bv-footer-col ul li a {
+            color: #2c4224;
+            text-decoration: none;
+            font-weight: 600;
+            text-shadow: 0.1px 0 #1c2e15;
+            transition: color 0.3s ease;
+            display: inline-block;
+        }
+
+        .bv-footer-col ul li a:hover {
+            color: #111111;
+        }
+
+        .bv-footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 30px;
+            font-size: 11px;
+            color: #405437;
+            font-weight: 600;
+        }
+
+        .bv-country-selector {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #1c2e15;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .bv-country-selector svg {
+            width: 14px;
+            height: 14px;
+            fill: currentColor;
+        }
+
+        .bv-copyright {
+            color: #405437;
+        }
+
+        /* Drawer для мобильного меню */
+        .mobile-menu-drawer {
+            position: fixed;
+            top: 0;
+            left: -100%;
+            width: 80%;
+            max-width: 320px;
+            height: 100vh;
+            background-color: #ffffff;
+            box-shadow: 5px 0 15px rgba(0, 0, 0, 0.05);
+            z-index: 1050;
+            transition: left 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            padding: 90px 0 40px 0;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            overflow-y: auto;
+        }
+
+        .mobile-menu-drawer.open {
+            left: 0;
+        }
+
+        .mobile-menu-title {
+            font-family: Arial, sans-serif;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: #666666;
+            padding: 0 30px;
+            margin-bottom: 5px;
+        }
+
+        .mobile-nav-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .mobile-nav-list li {
+            border-bottom: 1px solid #e5e5e5;
+        }
+
+        .mobile-nav-item {
+            text-decoration: none;
+            color: #111111;
+            font-size: 15px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            display: block;
+            font-family: Arial, sans-serif;
+            padding: 18px 30px;
+        }
+
+        .mobile-sub-links {
+            margin-top: auto;
+            padding: 20px 30px 0 30px;
+            border-top: 1px dashed #e5e5e5;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .mobile-sub-item {
+            text-decoration: none;
+            color: #666666;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-family: Arial, sans-serif;
+        }
+
+        .menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.2);
+            z-index: 1040;
+            display: none;
+        }
+
+        .menu-overlay.active {
+            display: block;
+        }
+
+        /* ── АДАПТИВНОСТЬ ── */
+        @media (max-width: 1024px) {
+
+            .main-navigation,
+            .desktop-info-links {
+                display: none;
+            }
+
+            .burger-btn {
+                display: flex;
+            }
+
+            .main-header {
+                padding: 15px 20px;
+            }
+
+            .logo {
+                font-size: 17px;
+                white-space: normal;
+                text-align: center;
+                display: inline-block;
+                line-height: 1.4;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .cart-page {
+                padding: 3rem 4vw;
+            }
+
+            .cart-container {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .bv-footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+
+            /* Скрытие заголовка на мобильных устройствах */
+            .cart-title {
+                display: none;
+            }
+
+            .cart-page {
+                padding: 2rem 16px;
+            }
+
+            /* Настройки карточек на мобильных */
+            .cart-item {
+                flex-direction: row;
+                gap: 1.25rem;
+                padding: 1.25rem;
+            }
+
+            .cart-item-image {
+                width: 90px;
+                height: 110px;
+            }
+
+            .cart-item-header {
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: flex-start;
+                gap: 5px;
+            }
+
+            .item-name {
+                font-size: 1rem;
+            }
+
+            .item-price {
+                order: -1;
+                margin-bottom: 2px;
+                font-size: 1rem;
+            }
+
+            .cart-item-actions {
+                margin-top: 1rem;
+            }
+
+            .qty-btn {
+                width: 30px;
+                height: 30px;
+            }
+
+            .qty-value {
+                width: 30px;
+            }
+
+            /* Настройки панели чекаута */
+            .cart-summary {
+                padding: 1.75rem 1.25rem;
+            }
+
+            .bv-footer {
+                padding: 40px 20px 30px 20px;
+            }
+
+            .bv-footer-top {
+                flex-direction: column;
+                gap: 25px;
+            }
+
+            .bv-footer-grid {
+                grid-template-columns: 1fr;
+                padding: 20px 0;
+            }
+
+            .bv-footer-col h3 {
+                padding: 15px 0;
+                margin-bottom: 0;
+                cursor: pointer;
+            }
+
+            .bv-footer-col h3 .acc-toggle {
+                display: block;
+            }
+
+            .bv-footer-col ul {
+                max-height: 0;
+                overflow: hidden;
+                transition: max-bezier(0.25, 1, 0.5, 1) 0.35s;
+            }
+
+            .bv-footer-col.active ul {
+                max-height: 300px;
+                padding-top: 15px;
+                padding-bottom: 15px;
+            }
+
+            .bv-footer-col.active h3 .acc-toggle {
+                transform: rotate(45deg);
+            }
+
+            .bv-footer-bottom {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .cart-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .cart-item-image {
+                width: 100%;
+                height: 180px;
+            }
+
+            .cart-item-actions {
+                width: 100%;
+                justify-content: space-between;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="header">
+        <div class="main-header">
+            <button class="burger-btn" id="burgerToggle" aria-label="Toggle Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <div class="header-section header-left">
+                <div class="desktop-info-links">
+                    <a href="/flora_jewerly_store_about_us.html">About Us</a>
+                    <a href="/flora_jewerly_store_our_story.html">Our Story</a>
+                    <a href="/flora_jewerly_store_contact_us.html">Contact Us</a>
+                </div>
+            </div>
+
+            <div class="header-section header-center">
+                <a href="/flora_jewelry_store.html" class="logo">FLEUR DE LUNE</a>
+            </div>
+
+            <div class="header-section header-right">
+                <a href="/flora_jewelry_store_wishlist.html" class="header-icon-link" aria-label="Wishlist">
+                    <svg class="icon" viewBox="0 0 24 24" style="fill: #000000; stroke: #000000;">
+                        <path
+                            d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                    </svg>
+                </a>
+                <a href="/flora_jewelry_store_shopping_cart.html" class="header-icon-link" aria-label="Shopping Bag">
+                    <svg class="icon" viewBox="0 0 24 24" style="fill: #40916C; stroke: #40916C;">
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                            d="M17 6h2c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H5c-1.1 0-2-.9-2-2V8c0-1.1.9-2 2-2h2c0-2.76 2.24-5 5-5s5 2.24 5 5zm-5-3c-1.66 0-3 1.34-3 3h6c0-1.66-1.34-3-3-3z" />
+                    </svg>
+                </a>
+                <a href="#" class="header-icon-link" aria-label="Account">
+                    <svg class="icon" viewBox="0 0 24 24" style="fill: #000000; stroke: #000000;">
+                        <path
+                            d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+
+        <nav class="main-navigation">
+            <ul class="nav-list">
+                <li><a href="/categories/rings/flora_jewerly_store_rings.html" class="nav-item">Rings</a></li>
+                <li><a href="/categories/bracelets/flora_jewerly_store_bracelets.html" class="nav-item">Bracelets</a>
+                </li>
+                <li><a href="/categories/earings/flora_jewerly_store_earings.html" class="nav-item">Earrings</a></li>
+                <li><a href="/categories/necklaces/flora_jewerly_store_necklaces.html" class="nav-item"
+                        style="border-right: 1px solid rgba(0, 0, 0, 0.363)">Necklaces</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="menu-overlay" id="menuOverlay"></div>
+    <div class="mobile-menu-drawer" id="mobileDrawer">
+        <h3 class="mobile-menu-title">Categories:</h3>
+        <ul class="mobile-nav-list">
+            <li><a href="/categories/rings/flora_jewerly_store_rings.html" class="mobile-nav-item">Rings</a></li>
+            <li><a href="/categories/bracelets/flora_jewerly_store_bracelets.html" class="mobile-nav-item">Bracelets</a>
+            </li>
+            <li><a href="/categories/earings/flora_jewerly_store_earings.html" class="mobile-nav-item">Earrings</a></li>
+            <li><a href="/categories/necklaces/flora_jewerly_store_necklaces.html" class="mobile-nav-item">Necklaces</a>
+            </li>
+        </ul>
+        <div class="mobile-sub-links">
+            <a href="/flora_jewerly_store_about_us.html" class="mobile-sub-item">About us</a>
+            <a href="/flora_jewerly_store_our_story.html" class="mobile-sub-item">Our Story</a>
+            <a href="/flora_jewerly_store_contact_us.html" class="mobile-sub-item">Contact Us</a>
+        </div>
+    </div>
+
+
+    <main class="cart-page">
+        <h1 class="cart-title"></h1>
+
+        <div class="cart-container">
+            <div class="cart-items">
+
+                <div class="cart-item">
+                    <div class="cart-item-image">
+                        <img src="assets/images/Red_Earrings.png" alt="Jardin de Rubis Earrings">
+                    </div>
+                    <div class="cart-item-details">
+                        <div class="cart-item-header">
+                            <div>
+                                <h2 class="item-name">Jardin de Rubis Earrings</h2>
+                                <p class="item-meta">Collection: Été 2025</p>
+                                <p class="item-meta">Material: 18k Green Gold</p>
+                                <p class="item-meta">Stones: Rare Red Spinel, Rose-cut Diamonds</p>
+                            </div>
+                            <span class="item-price">€14,200.00</span>
+                        </div>
+                        <div class="cart-item-actions">
+                            <div class="quantity-selector">
+                                <button type="button" class="qty-btn" onclick="return false;">−</button>
+                                <span class="qty-value">1</span>
+                                <button type="button" class="qty-btn" onclick="return false;">+</button>
+                            </div>
+                            <button type="button" class="remove-btn" onclick="return false;">Remove</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cart-item">
+                    <div class="cart-item-image">
+                        <img src="assets/images/Diamond-Gold_Earrings.png" alt="Lumière Dorée Bracelet">
+                    </div>
+                    <div class="cart-item-details">
+                        <div class="cart-item-header">
+                            <div>
+                                <h2 class="item-name">Lumière Dorée Bracelet</h2>
+                                <p class="item-meta">Collection: Signature Classic</p>
+                                <p class="item-meta">Material: 18k Yellow Gold</p>
+                                <p class="item-meta">Stones: Brilliant-cut Diamonds</p>
+                            </div>
+                            <span class="item-price">€8,800.00</span>
+                        </div>
+                        <div class="cart-item-actions">
+                            <div class="quantity-selector">
+                                <button type="button" class="qty-btn" onclick="return false;">−</button>
+                                <span class="qty-value">1</span>
+                                <button type="button" class="qty-btn" onclick="return false;">+</button>
+                            </div>
+                            <button type="button" class="remove-btn" onclick="return false;">Remove</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="cart-summary">
+                <h2 class="summary-title">Order Summary</h2>
+
+                <div class="summary-row">
+                    <span>Subtotal</span>
+                    <span>€23,000.00</span>
+                </div>
+                <div class="summary-row">
+                    <span>Shipping</span>
+                    <span style="color: var(--green-light); font-weight: 600;">Complimentary</span>
+                </div>
+                <div class="summary-row">
+                    <span>Estimated Duties & Taxes</span>
+                    <span>Included</span>
+                </div>
+
+                <div class="summary-row total">
+                    <span>Total</span>
+                    <span>€23,000.00</span>
+                </div>
+
+                <div class="promo-box">
+                    <input type="text" class="promo-input" placeholder="Promo Code"
+                        onkeypress="if(event.keyCode==13){return false;}">
+                    <button type="button" class="promo-btn" onclick="return false;">Apply</button>
+                </div>
+
+                <button type="button" class="btn-primary checkout-btn" onclick="return false;">Proceed to
+                    Checkout</button>
+            </div>
+        </div>
+    </main>
+
+
+    <footer class="bv-footer">
+        <div class="bv-footer-container">
+
+            <div class="bv-footer-top">
+                <a href="#" class="bv-newsletter-btn">Subscribe to our newsletters</a>
+                <div class="bv-social-links">
+                    <a href="#" aria-label="Instagram">Instagram</a>
+                    <a href="#" aria-label="Facebook">Facebook</a>
+                    <a href="#" aria-label="YouTube">YouTube</a>
+                    <a href="#" aria-label="Pinterest">Pinterest</a>
+                </div>
+            </div>
+
+            <div class="bv-footer-grid">
+                <div class="bv-footer-col">
+                    <h3>Maison Services <span class="acc-toggle">+</span></h3>
+                    <ul>
+                        <li><a href="#">Jewelry Care</a></li>
+                        <li><a href="#">Sizing Guide</a></li>
+                        <li><a href="#">Custom Engraving</a></li>
+                        <li><a href="#">Book an Appointment</a></li>
+                        <li><a href="#">Order Status</a></li>
+                    </ul>
+                </div>
+
+                <div class="bv-footer-col">
+                    <h3>Our Boutiques <span class="acc-toggle">+</span></h3>
+                    <ul>
+                        <li><a href="#">Find a Store</a></li>
+                        <li><a href="#">VIP Lounge Access</a></li>
+                        <li><a href="#">In-Store Pickup</a></li>
+                    </ul>
+                </div>
+
+                <div class="bv-footer-col">
+                    <h3>The World of Fleur <span class="acc-toggle">+</span></h3>
+                    <ul>
+                        <li><a href="#">Our Philosophy</a></li>
+                        <li><a href="#">Craftsmanship</a></li>
+                        <li><a href="#">Sustainability</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">The Maison History</a></li>
+                    </ul>
+                </div>
+
+                <div class="bv-footer-col">
+                    <h3>Legal & Trust <span class="acc-toggle">+</span></h3>
+                    <ul>
+                        <li><a href="#">Cookie Settings</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms & Conditions</a></li>
+                        <li><a href="#">Authenticity Guarantee</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="bv-footer-bottom">
+                <a href="#" class="bv-country-selector">
+                    <svg viewBox="0 0 24 24">
+                        <path
+                            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.53c-.26-.81-1-1.4-1.9-1.4h-1v-3c0-.55-.45-1-1-1h-6v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z" />
+                    </svg>
+                    Country/Region: International English
+                </a>
+                <div class="bv-copyright">
+                    &copy; 1984 FLEUR DE LUNE
+                </div>
+            </div>
+
+        </div>
+    </footer>
+
+
+    <script>
+        // Mobile Header Burger Toggle
+        const burgerBtn = document.getElementById('burgerToggle');
+        const mobileDrawer = document.getElementById('mobileDrawer');
+        const menuOverlay = document.getElementById('menuOverlay');
+
+        function toggleMenu() {
+            burgerBtn.classList.toggle('active');
+            mobileDrawer.classList.toggle('open');
+            menuOverlay.classList.toggle('active');
+        }
+
+        burgerBtn.addEventListener('click', toggleMenu);
+        menuOverlay.addEventListener('click', toggleMenu);
+
+        // Mobile Footer Accordion
+        document.querySelectorAll('.bv-footer-col h3').forEach(header => {
+            header.addEventListener('click', () => {
+                if (window.innerWidth <= 768) {
+                    const currentColumn = header.parentElement;
+                    currentColumn.classList.toggle('active');
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

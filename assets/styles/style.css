@@ -6,7 +6,7 @@
 }
 
 html {
- scroll-behavior: smooth;
+    scroll-behavior: smooth;
 }
 
 body {
@@ -16,7 +16,7 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
-/* --- Временный контейнер для контента сайта --- */
+/* ---контента сайта --- */
 main {
     min-height: 50vh;
     display: flex;
@@ -29,7 +29,7 @@ main {
 }
 
 /* ==========================================
-   СТИЛИ ХЕДЕРА
+   Хедер
    ========================================== */
 
 .header {
@@ -40,7 +40,6 @@ main {
     z-index: 1000;
 }
 
-/* --- Главная панель (Main Header) --- */
 .main-header {
     display: flex;
     justify-content: space-between;
@@ -79,7 +78,7 @@ main {
     color: #40916C;
 }
 
-/* Кнопка Бургера */
+/* Кнопка Бургер */
 .burger-btn {
     background: none;
     border: none;
@@ -111,7 +110,7 @@ main {
     transform: translateY(-6px) rotate(-45deg);
 }
 
-/* --- Центральная секция: Логотип --- */
+/* --- Центральная секция --- */
 .header-center {
     justify-content: center;
 }
@@ -127,7 +126,7 @@ main {
     white-space: nowrap;
 }
 
-/* Правая секция: Иконки */
+/* Правая секция */
 .header-right {
     justify-content: flex-end;
     gap: 25px;
@@ -140,7 +139,7 @@ main {
     align-items: center;
 }
 
-/* --- Навигация по категориям (Десктоп) --- */
+/* --- Навигация по категориям--- */
 .main-navigation {
     display: flex;
     justify-content: center;
@@ -297,14 +296,14 @@ main {
 
 
 /* ==========================================
-   СТИЛИ ФУТЕРА (КОМПЬЮТЕРНАЯ ВЕРСИЯ С ДВУМЯ ЦВЕТКАМИ)
+   Футер (С ДВУМЯ ЦВЕТКАМИ)
    ========================================== */
 
 .bv-footer {
     background-color: #CFE1B9;
     color: #1c2e15;
     padding: 60px 40px 30px 40px;
-    border-top: 1px solid rgba(0,0,0,0.08);
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
     letter-spacing: 0.1em;
     font-size: 12px;
     text-transform: uppercase;
@@ -442,7 +441,7 @@ main {
 
 
 /* ==========================================
-   АДАПТИВНОСТЬ И МОБИЛЬНЫЙ ФУТЕР
+   Адаптивность
    ========================================== */
 
 /* Планшетная версия */
@@ -455,6 +454,7 @@ main {
 }
 
 @media (max-width: 1024px) {
+
     .top-bar,
     .main-navigation,
     .desktop-info-links {
